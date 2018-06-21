@@ -6,7 +6,7 @@ class AppFooter extends React.Component {
     render(){
         return(
             <Footer style={{ textAlign: 'center' }}>
-                 ©2018 WebStage CloudStage
+                 CloudStage ©2018  Created by qiraosky
             </Footer>
         )
     }
