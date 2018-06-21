@@ -1,0 +1,12 @@
+.logo {
+    background: #001d38;
+    width:200px;
+    line-height: 64px;
+    float:left;
+    color:#fff;
+    text-align: center;
+}
+
+.ant-layout-sider-trigger {
+    padding-top:20px;
+}
