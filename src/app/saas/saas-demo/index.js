@@ -6,6 +6,7 @@ const data = [
     {name:"框架测试",uri:"/iframeDemo"}, 
     {name:"传参测试测试",uri:{pathname:"/paramDemo",search:"?param1=100&param2=test",payload:{var1:100,var2:"test2"}}}, //paramDemo
     {name:"http测试",uri:"/httpUtilsDemo"}, 
+    {name:"统合演示",uri:"/busiTableDemo"}
   ];
 
 const Demo = (props) =>{

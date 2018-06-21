@@ -26,6 +26,22 @@ const HttpUtilsDemo = Loadable({
       import(/* webpackChunkName: "saas-demo/httpUtilsDemo" */ "./saas/saas-demo/HttpUtilsDemo"),
       loading: Loading
 });
+const BusiFormDemo = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/busiFormDemo" */ "./saas/saas-demo/BusiFormDemo"),
+      loading: Loading
+});
+const BusiTableDemo = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/busiTableDemo" */ "./saas/saas-demo/BusiTableDemo"),
+      loading: Loading
+});
+const BusiDetailDemo = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/busiDetailDemo" */ "./saas/saas-demo/BusiDetailDemo"),
+      loading: Loading
+});
+
 
 
 
@@ -33,12 +49,15 @@ class AppRouter extends React.Component {
     render() {
         return (
             <AppLayout>
-                <div id="layout">
+                <div>
                     <Route exact path="/" component={SaasDemoIndex} />
                     <Route path="/saasDemoIndex" component={SaasDemoIndex} />
                     <Route path="/iframeDemo" component={IFrameDemo} />
                     <Route path="/paramDemo" component={ParamDemo} />
                     <Route path="/httpUtilsDemo" component={HttpUtilsDemo} />
+                    <Route path="/busiFormDemo" component={BusiFormDemo} />
+                    <Route path="/busiTableDemo" component={BusiTableDemo} />
+                    <Route path="/busiDetailDemo" component={BusiDetailDemo} />
                 </div>
             </AppLayout>
         )
