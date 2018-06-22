@@ -8,6 +8,6 @@ const fastApi = {
         res.send({ status: 'ok', message: '333保存成功 ！' });
     }
 }
-
+ 
  
 module.exports = Object.assign(fastApi,legcy,portal);
