@@ -5,6 +5,7 @@
 5，app/utils 存放系统工具类，应用系统不能将代码放置在此目录中
 7，redux reducer 定义首字母大写，在 combineReducers 时首字母改为小写，以示为一个属性
 
+
 【代码目录结构】
 -- src //源代码文件夹
 |-- actions //系统redux actions
@@ -26,4 +27,4 @@
     |-- reducers //本服务要使用到的 reducer
         -- index.js //为暴露出去的 reducers 文件
     |-- services //存放与服务器交互的请求方法
-    -- index.js  //放置本Saas系统要暴露出去的组件，并 export 相关组件
+    -- index.js  //放置本Saas系统要暴露出去的组件，并 export 相关组件,修改记录
