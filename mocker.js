@@ -9,5 +9,4 @@ const fastApi = {
     }
 }
  
- 
 module.exports = Object.assign(fastApi,legcy,portal);
