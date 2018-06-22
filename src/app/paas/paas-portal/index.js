@@ -7,6 +7,13 @@ const AppLayout = Loadable({
       loading: Loading
 });
 
+const Home = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "paas-portal/home" */ "./components/home/Home"),
+      loading: Loading
+});
+
 export default {
-    AppLayout
+    AppLayout,
+    Home
 }

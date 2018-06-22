@@ -2,9 +2,9 @@
  const menuJson1 = [
     {key:"a",name:'申报管理',icon:'book',
         children:[
-            {key:"a1",name:'投资立项申请',uri:'/saasDemoIndex'},
-            {key:"a2",name:'投资项目立项计划',uri:{pathname:'/saasDemoIndex',search:'?name=1'}},
-            {key:"a3",name:'项目咨询',uri:'/iframeDemo'},
+            {key:"a1",name:'投资立项申请',uri:'/demo/saasDemoIndex'},
+            {key:"a2",name:'投资项目立项计划',uri:{pathname:'/demo/ParamDemo',search:'?name=1'}},
+            {key:"a3",name:'项目咨询',uri:'/demo/iframeDemo'},
             {key:"a4",name:'项目申报',uri:''}
         ]
     },
