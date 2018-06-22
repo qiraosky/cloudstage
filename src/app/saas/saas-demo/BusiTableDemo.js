@@ -1,9 +1,12 @@
 import React from 'react'
+import {Avatar } from 'antd';
 
 class BusiTableDemo extends React.Component{
     render(){
         return (
-            <div>BusiTableDemo </div>
+            <div>BusiTableDemo
+                <Avatar size="large" icon="user" />
+            </div>
         );
     }
 }
