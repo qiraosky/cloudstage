@@ -10,6 +10,7 @@ module.exports = (env) => {
   return {
       entry: {
         'vendor': ['antd'],
+        'reducers': ['./src/app/RootReducer.js'],
         'bundle': ['babel-polyfill','./src/main.js']
       },
       output: {
