@@ -1,30 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { List } from 'antd';
+import Loadable from 'react-loadable';
+import Loading from '../../components/loading/RemoteComponentLoading';
 
-const data = [
-    {name:"框架测试",uri:"/iframeDemo"}, 
-    {name:"传参测试测试",uri:{pathname:"/paramDemo",search:"?param1=100&param2=test",payload:{var1:100,var2:"test2"}}}, //paramDemo
-    {name:"http测试",uri:"/httpUtilsDemo"}, 
-    {name:"统合演示",uri:"/busiTableDemo"}
-  ];
+const SaasDemoIndex = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/demoIndex" */ "./components/DemoIndex.js"),
+      loading: Loading
+});
+const IFrameDemo = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/iframeDemo" */ "./components/IFrameDemo"),
+      loading: Loading
+});
+const ParamDemo = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/paramDemo" */ "./components/ParamDemo"),
+      loading: Loading
+});
+const HttpUtilsDemo = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/httpUtilsDemo" */ "./components/HttpUtilsDemo"),
+      loading: Loading
+});
+const BusiFormDemo = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/busiFormDemo" */ "./components/BusiFormDemo"),
+      loading: Loading
+});
+const BusiTableDemo = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/busiTableDemo" */ "./components/BusiTableDemo"),
+      loading: Loading
+});
+const BusiDetailDemo = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/busiDetailDemo" */ "./components/BusiDetailDemo"),
+      loading: Loading
+});
 
-const Demo = (props) =>{
-    return (
-            <div>
-                <h1>演示索引页:</h1>
-                <List
-                    bordered
-                    dataSource={data}
-                    renderItem={item => (
-                            <List.Item>
-                                <Link to={item.uri} >
-                                    {item.name}
-                                </Link>
-                            </List.Item>
-                    )}
-                />
-            </div>
-    )
+
+
+export default {
+    SaasDemoIndex,
+    IFrameDemo,
+    ParamDemo,
+    HttpUtilsDemo,
+    BusiFormDemo,
+    BusiTableDemo,
+    BusiDetailDemo
 }
-export default Demo;

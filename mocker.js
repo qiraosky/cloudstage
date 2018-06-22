@@ -1,4 +1,12 @@
+let dataTemp = []
+
 const proxy = {
+    'GET /api/save': (req, res) => {
+        let now = new Date()
+        dataTemp.push(`${now.toLocaleDateString()} ${now.toLocaleTimeString()}`)
+        res.send({ status: 'ok', message: '保存成功！' });
+    },
+    'GET /api/detail': dataTemp,
     'GET /api/getGridList': (req, res)=>{
         const entitylist = [];
         for (let i = 0; i < 100; i++) {

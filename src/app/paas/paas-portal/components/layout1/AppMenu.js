@@ -1,7 +1,7 @@
 import React from 'react'
-import Loadable from 'react-loadable';
-import Loading from '../../../../components/loading/RemoteComponentLoading'; 
 import { connect } from 'react-redux';
+import PaasIam from '../../../paas-iam';
+
 
 //映射Redux state到组件的属性  
 function mapStateToProps(state) {
@@ -14,21 +14,13 @@ function mapDispatchToProps(dispatch) {
     return {}
 }
 
-
-const CloudMenu = Loadable({
-    loader: () =>
-      import(/* webpackChunkName: "paas-iam/menu" */ "../../../paas-iam/components/CloudMenu"),
-      loading: Loading
-});
-
-
 class AppMenu extends React.Component {
     constructor(props){
         super(props)
     }
     render(){
         return(
-            <CloudMenu 
+            <PaasIam.CloudMenu 
                 mode='inline' 
                 initMenu={this.props.initMenu} 
                 inlineCollapsed={this.props.inlineCollapsed}

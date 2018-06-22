@@ -1,5 +1,5 @@
 import React from 'react'
-import { httpGet, httpPost } from '../../utils/HttpUtils';
+import { httpGet, httpPost } from '../../../utils/HttpUtils';
 import { Button } from 'antd';
 
 class HttpUtilsDemo extends React.Component {
