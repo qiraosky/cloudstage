@@ -2,7 +2,7 @@ import React from 'react'
 import { Layout, Menu , Avatar , Badge , Popover , Icon} from 'antd';
 import { connect } from 'react-redux';
 const { Header } = Layout;
-import { topMenuSwitchAction  } from '../../actions/Actions';
+import { topMenuSwitchAction  } from '../../actions';
 
 
 //映射Redux state到组件的属性  
