@@ -1,24 +1,32 @@
-import { syncHttp } from '../../../utils/HttpUtils';
-
-
-//得到菜单数据
-const  getMenuData = (menuTag) => {
-    console.log(menuTag)
-    let rootMenu = syncHttp({
-        url:"/paas-iam/menu/getMenu",
-        data:JSON.stringify({menuTag:menuTag})
-    });
-        return rootMenu;
+const iam = {
+    'GET /paas-iam/test': (req, res) => {
+        res.send({ status: 'ok', message: 'IAM测试1 ！' });
+    },
+    'POST /paas-iam/menu/getMenu':(req, res) =>{
+        const { menuTag } = req.body;
+        let rootMenu = {}
+        let menuList = [];
+        switch(menuTag){
+            case "menu1":menuList = menuJson1;break;
+            case "menu2":menuList = menuJson2;break;
+            case "menu3":menuList = menuJson3;break;
+            case "menu4":menuList = menuJson4;break;
+            default: menuList = menuJson1;
+        }
+        if(menuList instanceof Array && menuList.length > 0){
+            rootMenu = {
+                key:"rootMenu",
+                name:"根菜单",
+                children:menuList
+            }
+        }
+        return res.send(rootMenu);
     }
+}
 
 
+//******************************************************************************************* */
 //菜单数据
-export default {
-    getMenuData
-};
-
-
-//以下为模拟数据***********************************************************************************************
 const menuJson1 = [
     {key:"a",name:'申报管理',icon:'book',
         children:[
@@ -121,3 +129,8 @@ const menuJson4 = [
         ]
     }
 ]; 
+
+
+/******************************************************************************************* */
+
+module.exports = iam

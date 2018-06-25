@@ -38,7 +38,8 @@ const syncHttp = (httpParam) =>{
   var _httpParam = {
              type:"POST",
              async: false,
-             dataType:"json"
+             dataType:"json",
+             contentType: "application/json"
       };
       
       if(httpParam){

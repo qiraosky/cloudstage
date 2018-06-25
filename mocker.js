@@ -1,6 +1,8 @@
 //引用的接口，重启 webpack 才会生效
 const legcy = require('./mocker/legcy');
-const portal = require('./mocker/portal');
+const paasPortal = require('./mocker/paas-portal');
+const paasIam = require('./mocker/paas-iam');
+const saasDemo = require('./mocker/saas-demo');
 
 //在此页面的接口调整保存即生效
 const fastApi = {
@@ -9,4 +11,10 @@ const fastApi = {
     }
 }
  
-module.exports = Object.assign(fastApi,legcy,portal);
+module.exports = Object.assign(
+    fastApi
+    ,legcy
+    ,paasPortal
+    ,paasIam
+    ,saasDemo
+);
