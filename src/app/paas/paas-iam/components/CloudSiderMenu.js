@@ -5,7 +5,7 @@ import CloudMenuService from '../services/CloudMenuService';
 const { SubMenu } = Menu;
 
 //菜单渲染
-class CloudMenu extends React.Component {
+class CloudSiderMenu extends React.Component {
     constructor(props){
         super(props)
     }
@@ -61,12 +61,6 @@ class CloudMenu extends React.Component {
         return menuJsx; */
     }
 
-
-    
-
-
-
-
     render(){
         let menuJsx = this.getMenu(this.props.initMenu);
         return(
@@ -81,4 +75,4 @@ class CloudMenu extends React.Component {
         )
     }
  }
- export default CloudMenu;
+ export default CloudSiderMenu;

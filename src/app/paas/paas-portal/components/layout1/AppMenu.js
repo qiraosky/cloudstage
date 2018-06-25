@@ -20,7 +20,7 @@ class AppMenu extends React.Component {
     }
     render(){
         return(
-            <PaasIam.CloudMenu 
+            <PaasIam.CloudSiderMenu 
                 mode='inline' 
                 initMenu={this.props.initMenu} 
                 inlineCollapsed={this.props.inlineCollapsed}
