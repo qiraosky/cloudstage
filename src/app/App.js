@@ -22,7 +22,7 @@ import 'moment/locale/zh-cn';
 /* redux */
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import RootReducer from './RootReducer';
+import RootReducer from './AppRootReducer';
 let store = createStore(RootReducer);  
 
 
