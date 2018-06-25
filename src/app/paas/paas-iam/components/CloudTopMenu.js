@@ -2,14 +2,6 @@ import React from 'react'
 import { Menu, Icon  } from 'antd';
 import CloudMenuService from '../services/CloudMenuService';
 
-const topMenuData = [
-    {name:"项目管理",keyCode:"key1"},
-    {name:"预算管理",keyCode:"key2"},
-    {name:"统计分析",keyCode:"key3"},
-    {name:"系统管理",keyCode:"key4"}
-]
-
-
 
 class CloudTopMenu extends React.Component {
     constructor(props){
@@ -18,6 +10,10 @@ class CloudTopMenu extends React.Component {
     }
 
     renderMenu () {
+        let topMenuData = CloudMenuService.getTopMenuData();
+        if(!(topMenuData instanceof Array)){
+            return null;
+        }
         return topMenuData.map((item,index) => {
             return (<Menu.Item key={index} 
                         onClick={this.props.onMenuSwitchKey(item.keyCode)}>

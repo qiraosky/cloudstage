@@ -8,6 +8,16 @@ const saasDemo = require('./mocker/saas-demo');
 const fastApi = {
     'GET /demo/test': (req, res) => {
         res.send({ status: 'ok', message: '333保存成功 ！' });
+    },
+    //顶部menu
+    'POST /paas-iam/menu/getTopMenu':(req, res) =>{
+        const topMenuData = [
+            {name:"项目管理",keyCode:"key1"},
+            {name:"预算管理",keyCode:"key2"},
+            {name:"统计分析",keyCode:"key3"},
+            {name:"系统管理",keyCode:"key4"}
+        ]
+        return res.send(topMenuData);
     }
 }
  

@@ -2,16 +2,17 @@ const iam = {
     'GET /paas-iam/test': (req, res) => {
         res.send({ status: 'ok', message: 'IAM测试1 ！' });
     },
+    //侧边栏menu
     'POST /paas-iam/menu/getMenu':(req, res) =>{
         const { menuTag } = req.body;
         let rootMenu = {}
         let menuList = [];
         switch(menuTag){
-            case "menu1":menuList = menuJson1;break;
-            case "menu2":menuList = menuJson2;break;
-            case "menu3":menuList = menuJson3;break;
-            case "menu4":menuList = menuJson4;break;
-            default: menuList = menuJson1;
+            case "menu1":menuList = siderMenuJson1;break;
+            case "menu2":menuList = siderMenuJson2;break;
+            case "menu3":menuList = siderMenuJson3;break;
+            case "menu4":menuList = siderMenuJson4;break;
+            default: menuList = siderMenuJson1;
         }
         if(menuList instanceof Array && menuList.length > 0){
             rootMenu = {
@@ -25,9 +26,13 @@ const iam = {
 }
 
 
+
+
+
+
 //******************************************************************************************* */
 //菜单数据
-const menuJson1 = [
+const siderMenuJson1 = [
     {key:"a",name:'申报管理',icon:'book',
         children:[
             {key:"a1",name:'投资立项申请',uri:'/demo/saasDemoIndex'},
@@ -68,7 +73,7 @@ const menuJson1 = [
 ];
 
 
-const menuJson2 = [
+const siderMenuJson2 = [
     {key:"d",name:'一级菜单二A',icon:'tool',
         children:[
             {key:"d1",name:'二级菜单1'},
@@ -93,7 +98,7 @@ const menuJson2 = [
 ];
 
 
-const menuJson3 = [
+const siderMenuJson3 = [
     {key:"d",name:'一级菜单三A',icon:'tool',
         children:[
             {key:"d1",name:'项目开工'},
@@ -112,7 +117,7 @@ const menuJson3 = [
 ];
 
 
-const menuJson4 = [
+const siderMenuJson4 = [
     {key:"d",name:'一级菜单四A',icon:'tool',
         children:[
             {key:"d1",name:'项目开工'},
