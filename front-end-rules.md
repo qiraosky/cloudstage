@@ -1,3 +1,4 @@
+# 基本规则
 1，文件夹名必须小写，多个字母组成的文件夹名，使用中横线分隔，如 saas-portal, demo-myplugin
 2，文件首字母大写，采用驼峰命名方式； 
 3，文件名要与导出的类名相同； 
@@ -6,7 +7,7 @@
 7，redux reducer 定义首字母大写，在 combineReducers 时首字母改为小写，以示为一个属性
 
 
-【代码目录结构】
+# 代码目录结构
 -- src //源代码文件夹
 |-- actions //系统redux actions
 |-- components //系统组件
@@ -19,7 +20,7 @@
     |-- saas-demo //演示系统
 
 
-业务系统标准目录：
+# 业务系统标准目录
 |-- saas-demo
     |-- actions //本Saas系统 action 
         -- index.js // 一般情况下目录下只有一个 index.js 文件，如果 Action 过多，index.js 为暴露出的接口文件
