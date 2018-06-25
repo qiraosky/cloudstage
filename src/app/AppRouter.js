@@ -8,7 +8,7 @@ import SaasDemo from './saas/saas-demo';
 const SAAS_DEMO_ROUTER = {
     basePath:'demo',
     routerList: [
-        {url:'saasDemoIndex',componentName:'SaasDemoIndex'},
+        {url:'index',componentName:'SaasDemoIndex'},
         {url:'iframeDemo',componentName:'IFrameDemo'},
         {url:'paramDemo',componentName:'ParamDemo'},
         {url:'httpUtilsDemo',componentName:'HttpUtilsDemo'},

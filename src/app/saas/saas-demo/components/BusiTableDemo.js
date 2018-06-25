@@ -1,13 +1,21 @@
 import React from 'react'
-import {Avatar } from 'antd';
+import BusiTableGrid from './BusiTable/BusiTableGrid';
+import BusiTableSearch from './BusiTable/BusiTableSearch';
 
 class BusiTableDemo extends React.Component{
+    constructor(props){
+        super(props);
+    }//end of constructor
+
     render(){
         return (
-            <div>BusiTableDemo
-                <Avatar size="large" icon="user" />
+            <div>
+                <BusiTableSearch/>
+                <BusiTableGrid/> 
             </div>
         );
     }
 }
 export default BusiTableDemo;
+
+

@@ -22,6 +22,16 @@ const iam = {
             }
         }
         return res.send(rootMenu);
+    },
+    //顶部menu
+    'POST /paas-iam/menu/getTopMenu':(req, res) =>{
+        const topMenuData = [
+            {name:"项目管理",keyCode:"key1"},
+            {name:"预算管理",keyCode:"key2"},
+            {name:"统计分析",keyCode:"key3"},
+            {name:"系统管理",keyCode:"key4"}
+        ]
+        return res.send(topMenuData);
     }
 }
 
@@ -35,7 +45,7 @@ const iam = {
 const siderMenuJson1 = [
     {key:"a",name:'申报管理',icon:'book',
         children:[
-            {key:"a1",name:'投资立项申请',uri:'/demo/saasDemoIndex'},
+            {key:"a1",name:'投资立项申请',uri:'/demo/index'},
             {key:"a2",name:'投资项目立项计划',uri:{pathname:'/demo/ParamDemo',search:'?name=1'}},
             {key:"a3",name:'项目咨询',uri:'/demo/iframeDemo'},
             {key:"a4",name:'项目申报',uri:''}
