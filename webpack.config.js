@@ -4,6 +4,8 @@ const path = require('path');
 const apiMocker = require('webpack-api-mocker');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 module.exports = (env) => {
   let isDev = env == "devEnv";
@@ -15,7 +17,7 @@ module.exports = (env) => {
       },
       output: {
         path: path.resolve(__dirname, './dist'),
-        filename: '[name].js'
+        filename: '[name]'+(isDev?"":".[hash]")+'.js'
       },
       optimization: {
             runtimeChunk: {
@@ -44,7 +46,11 @@ module.exports = (env) => {
           },{
             test: /\.css$/,
             //exclude: /node_modules/,
-            use: ['style-loader', 'css-loader']
+            use: [
+                //'style-loader', 
+                MiniCssExtractPlugin.loader,
+                'css-loader'
+            ]
         },{
           　 test: /\.(png|jpg|gif)$/,
   　　　　　　loader: 'file-loader',
@@ -67,10 +73,14 @@ module.exports = (env) => {
         //webpack.optimize.CommonsChunkPlugin has been removed, please use config.optimization.splitChunks instead.
         //new webpack.optimize.CommonsChunkPlugin({ name: 'vendor'}),
         
-        new webpack.HotModuleReplacementPlugin()
+         new webpack.HotModuleReplacementPlugin()
         ,new HtmlWebpackPlugin({
           template: "./src/index.html",
           filename: "./index.html",
+        })
+        ,new MiniCssExtractPlugin({
+          filename: '[name]'+(isDev?"":".[hash]")+'.css',
+          chunkFilename: '[name]'+(isDev?"":".[hash]")+'.css'
         })
         ,new webpack.optimize.SplitChunksPlugin({
           chunks: "chunks",

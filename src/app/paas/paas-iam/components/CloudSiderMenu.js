@@ -34,6 +34,9 @@ class CloudSiderMenu extends React.Component {
 
     getMenu(menuTag){
         let menuTreeData = CloudMenuService.getMenuData(menuTag);
+        if(!menuTreeData || !menuTreeData.children){
+            return null;
+        }
 
         return menuTreeData.children.map((menuData)=>{
             return this.getMenuJsx(menuData)

@@ -1,7 +1,18 @@
 import React from 'react'
-import { Form, Row, Col, Input, Button, Icon , Divider} from 'antd';
+import { Form, Row, Col, Input, Button, Icon , Divider, Select , DatePicker , Switch , TreeSelect} from 'antd';
 const FormItem = Form.Item;
-import './busiSearch.css';
+
+
+const SearchFormItem = (props)=>{
+    return (
+      <Col span={props.span} key={props.key} style={{ padding:"0px 12px",display: props.display ? 'block' : 'none' }}>
+        <FormItem label={props.name}>
+              {props.children}
+        </FormItem>
+    </Col>
+    )
+}
+
 
 class AdvancedSearchForm extends React.Component {
     state = {
@@ -29,22 +40,70 @@ class AdvancedSearchForm extends React.Component {
       const count = this.state.expand ? 5 : 3;
       const { getFieldDecorator } = this.props.form;
       const children = [];
-      for (let i = 0; i < 10; i++) {
-        children.push(
-          <Col span={8} key={i} style={{ display: i < count ? 'block' : 'none' }}>
-            <FormItem label={`属性 ${i}`}>
-              {getFieldDecorator(`field-${i}`, {
-                rules: [{
-                  required: false,
-                  message: '请输入!',
-                }],
-              })(
-                <Input span={6} placeholder="请输入查询条件" />
-              )}
-            </FormItem>
-          </Col>
-        );
-      }
+
+      children.push(
+          <SearchFormItem
+            span={8}
+            key="f1"
+            itemKey="f1"
+            display={true}
+            FieldDecorator = {getFieldDecorator}
+            name="姓名">
+            <Input span={6} placeholder="请输入查询条件"  />
+          </SearchFormItem>
+      );
+
+      children.push(
+        <SearchFormItem
+            span={8}
+            key="f2"
+            itemKey="f2"
+            display={true}
+            FieldDecorator = {getFieldDecorator}
+            name="账号">
+            <Input span={6} placeholder="请输入查询条件"  />
+          </SearchFormItem>
+      );
+
+      children.push(
+        <SearchFormItem
+            span={8}
+            key="f3"
+            itemKey="f3"
+            display={true}
+            FieldDecorator = {getFieldDecorator}
+            name="性别">
+              <Select span={6} defaultValue="male">
+                      <Select.Option value="male">男</Select.Option>
+                      <Select.Option value="famale">女</Select.Option>
+               </Select>
+          </SearchFormItem>
+      );
+
+      children.push(
+        <SearchFormItem
+            span={8}
+            key="f4"
+            itemKey="f4"
+            display={this.state.expand}
+            FieldDecorator = {getFieldDecorator}
+            name="出生年月">
+               <DatePicker.RangePicker />
+          </SearchFormItem>
+      );
+      
+      children.push(
+        <SearchFormItem
+            span={8}
+            key="f5"
+            itemKey="f5"
+            display={this.state.expand}
+            FieldDecorator = {getFieldDecorator}
+            name="状态">
+               <Switch defaultChecked />
+          </SearchFormItem>
+      );
+
       return children;
     }
   

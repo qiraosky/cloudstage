@@ -24,6 +24,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import RootReducer from './AppRootReducer';
 let store = createStore(RootReducer);  
+import '../assets/css/customer.css';
 
 
 /* application */
