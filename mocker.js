@@ -86,8 +86,9 @@ const fastApi = {
     },
     'POST /demo/saveData':(req, res) => {
         let param = req.body;
+        param.userId = uuid.v4()
         demoGridDataList.push(param)
-        res.send({ status: 'ok', user: {}}); 
+        res.send({ status: 'ok', user: demoGridDataList[demoGridDataList.length-1]}); 
     },
     'POST /demo/updateData':(req, res) => {
         let param = req.body;
