@@ -1,5 +1,4 @@
 import React from 'react'
-import BusiTableGrid from './BusiTable/BusiTableGrid';
 import BusiTableSearch from './BusiTable/BusiTableSearch';
 
 class BusiTableDemo extends React.Component{
@@ -11,7 +10,6 @@ class BusiTableDemo extends React.Component{
         return (
             <div>
                 <BusiTableSearch/>
-                <BusiTableGrid/> 
             </div>
         );
     }

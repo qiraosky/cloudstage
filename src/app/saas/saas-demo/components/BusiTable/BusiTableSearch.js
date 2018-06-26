@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Row, Col, Input, Button, Icon , Divider, Select , DatePicker , Switch , TreeSelect} from 'antd';
 const FormItem = Form.Item;
-
+import BusiTableGrid from './BusiTableGrid';
 
 const SearchFormItem = (props)=>{
     return (
@@ -109,6 +109,7 @@ class AdvancedSearchForm extends React.Component {
   
     render() {
       return (
+        <div>
         <Form
           className="ant-advanced-search-form"
           onSubmit={this.handleSearch}
@@ -128,7 +129,8 @@ class AdvancedSearchForm extends React.Component {
               </a>
          </div>
         </Form>
-        
+            <BusiTableGrid searchData={this.props.form}/>
+        </div>
       );
     }
   }

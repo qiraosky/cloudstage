@@ -1,39 +1,8 @@
 import React from 'react'
-import { Table , Button , Divider , Icon } from 'antd';
+import { Table , Button , Divider , Popconfirm ,message } from 'antd';
 import { http } from '../../../../utils/HttpUtils';
 import { Link } from 'react-router-dom';
 
-
-const columns = [{
-    title: '姓名',
-    dataIndex: 'name',
-    sorter: true,
-    render: name => `${name.first} ${name.last}`,
-    width: '20%',
-  }, {
-    title: '性别',
-    dataIndex: 'gender',
-    filters: [
-      { text: '男', value: 'male' },
-      { text: '女', value: 'female' },
-    ],
-    width: '20%',
-  }, {
-    title: '电子邮箱',
-    dataIndex: 'email',
-},{
-  title: '操作',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-      <Link to={{pathname:'/demo/BusiDetailDemo',search:`?name=${record.login.uuid}`}} title='详情'  >详情</Link>
-      <Divider type="vertical" />
-      <Link to={{pathname:'/demo/busiFormDemo',search:`?name=${record.login.uuid}`}} title='更新'  >更新</Link>
-      <Divider type="vertical" />
-      <a href="javascript:;">删除</a>
-    </span>
-  )}
-];
 
 class BusiTableGrid extends React.Component{
     constructor(props){
@@ -45,14 +14,71 @@ class BusiTableGrid extends React.Component{
         };
     }//end of constructor
 
+
+    deleteData = (userId) => {
+      console.log(userId)
+        http({
+          url:'/demo/deleteGridData',
+          data:{
+            userId:userId
+          }
+        }).then((req)=>{
+          message.success('删除成功');
+          console.log("pagination",this.state.pagination)
+          this.fetch({
+            pageSize:this.state.pagination.pageSize,
+            page:this.state.pagination.current
+          });
+        },(error)=>{
+          message.error('删除失败');
+        })
+    }
+
+    columns = [{
+      title: '姓名',
+      dataIndex: 'name',
+      sorter: true,
+      render: name => `${name.first} ${name.last}`,
+      width: '20%',
+    }, {
+      title: '性别',
+      dataIndex: 'gender',
+      filters: [
+        { text: '男', value: 'male' },
+        { text: '女', value: 'female' },
+      ],
+      width: '20%',
+    }, {
+      title: '电子邮箱',
+      dataIndex: 'email',
+  },{
+    title: '操作',
+    key: 'action',
+    render: (text, record) => {
+      return (
+      <span>
+        <Link to={{pathname:'/demo/BusiDetailDemo',search:`?name=${record.userId}`}} title='详情'  >详情</Link>
+        <Divider type="vertical" />
+        <Link to={{pathname:'/demo/busiFormDemo',search:`?name=${record.userId}`}} title='更新'  >更新</Link>
+        <Divider type="vertical" />
+        <Popconfirm title="是否删除?" onConfirm={() => this.deleteData(record.userId)}>
+          <a href="javascript:;">删除</a>
+        </Popconfirm>
+      </span>
+    )}}
+  ];
+
+
+
       handleTableChange = (pagination, filters, sorter) => {
         const pager = { ...this.state.pagination };
         pager.current = pagination.current;
         this.setState({
           pagination: pager,
         });
+        this.state.pagination = pagination;
         this.fetch({
-          results: pagination.pageSize,
+          pageSize: pagination.pageSize,
           page: pagination.current,
           sortField: sorter.field,
           sortOrder: sorter.order,
@@ -63,22 +89,24 @@ class BusiTableGrid extends React.Component{
         console.log('params:', params);
         this.setState({ loading: true });
         http({
-          url: 'https://randomuser.me/api',
-          method: 'get',
+          url: 'http://127.0.0.1:3001/demo/gridData',
+          method: 'post',
           data: {
-            results: 10,
+            pageSize: 10,
             ...params,
           },
           type: 'json',
         }).then((req) => {
           const pagination = { ...this.state.pagination };
+          const info = req.data.info;
+          const results = req.data.results;
           // Read total count from server
           // pagination.total = data.totalCount;
           console.log(req.data)
-          pagination.total = 200;
+          pagination.total = info.total;
           this.setState({
             loading: false,
-            data: req.data.results,
+            data: results,
             pagination,
           });
         });
@@ -95,9 +123,9 @@ class BusiTableGrid extends React.Component{
                   <Button style={{marginTop:'16px'}} type="primary">新增</Button>
                 </Link>
                 <Table
-                        columns={columns}
+                        columns={this.columns}
                         bordered
-                        //rowKey={record => record.login.uuid}
+                        rowKey={record => record.userId}
                         dataSource={this.state.data}
                         pagination={this.state.pagination}
                         loading={this.state.loading}
@@ -109,5 +137,3 @@ class BusiTableGrid extends React.Component{
     }
 }
 export default BusiTableGrid;
-
-
