@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Row, Col, Input, Button, Icon , Divider} from 'antd';
 const FormItem = Form.Item;
+import './busiSearch.css';
 
 class AdvancedSearchForm extends React.Component {
     state = {
@@ -25,7 +26,7 @@ class AdvancedSearchForm extends React.Component {
   
     // To generate mock Form.Item
     getFields() {
-      const count = this.state.expand ? 6 : 2;
+      const count = this.state.expand ? 5 : 3;
       const { getFieldDecorator } = this.props.form;
       const children = [];
       for (let i = 0; i < 10; i++) {
@@ -34,11 +35,11 @@ class AdvancedSearchForm extends React.Component {
             <FormItem label={`属性 ${i}`}>
               {getFieldDecorator(`field-${i}`, {
                 rules: [{
-                  required: true,
-                  message: 'Input something!',
+                  required: false,
+                  message: '请输入!',
                 }],
               })(
-                <Input placeholder="placeholder" />
+                <Input span={6} placeholder="请输入查询条件" />
               )}
             </FormItem>
           </Col>
@@ -58,14 +59,15 @@ class AdvancedSearchForm extends React.Component {
             <Col span={24} style={{ textAlign: 'right' }}>
               <Button type="primary" htmlType="submit">查询</Button>
               <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-                请空
+                清空
               </Button>
             </Col>
           </Row>
-          <Divider><a style={{ marginLeft: 8, fontSize: 12 }} onClick={this.toggle}>
+          <div style={{width:"100%",textAlign:"center"}}>
+            <a style={{ marginLeft: 8, fontSize: 12 }} onClick={this.toggle}>
               {!this.state.expand ? '展开查询' : '收起查询'} <Icon type={this.state.expand ? 'up' : 'down'} />
               </a>
-         </Divider>
+         </div>
         </Form>
         
       );

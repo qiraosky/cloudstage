@@ -1,6 +1,8 @@
 import React from 'react'
 import { Table , Button , Divider , Icon } from 'antd';
 import { http } from '../../../../utils/HttpUtils';
+import { Link } from 'react-router-dom';
+
 
 const columns = [{
     title: '姓名',
@@ -12,8 +14,8 @@ const columns = [{
     title: '性别',
     dataIndex: 'gender',
     filters: [
-      { text: 'Male', value: 'male' },
-      { text: 'Female', value: 'female' },
+      { text: '男', value: 'male' },
+      { text: '女', value: 'female' },
     ],
     width: '20%',
   }, {
@@ -24,9 +26,9 @@ const columns = [{
   key: 'action',
   render: (text, record) => (
     <span>
-      <a href="javascript:;">详情</a>
+      <Link to={{pathname:'/demo/BusiDetailDemo',search:`?name=${record.login.uuid}`}} title='详情'  >详情</Link>
       <Divider type="vertical" />
-      <a href="javascript:;">更新</a>
+      <Link to={{pathname:'/demo/busiFormDemo',search:`?name=${record.login.uuid}`}} title='更新'  >更新</Link>
       <Divider type="vertical" />
       <a href="javascript:;">删除</a>
     </span>
@@ -89,7 +91,9 @@ class BusiTableGrid extends React.Component{
     render(){
         return (
             <div>
-                <Button type="primary">新增</Button>
+                <Link to='/demo/busiFormDemo' title='新增' >
+                  <Button style={{marginTop:'16px'}} type="primary">新增</Button>
+                </Link>
                 <Table
                         columns={columns}
                         bordered
@@ -98,6 +102,7 @@ class BusiTableGrid extends React.Component{
                         pagination={this.state.pagination}
                         loading={this.state.loading}
                         onChange={this.handleTableChange}
+                        style={{margin:"16px 16px 16px 0px"}}
                     />
             </div>
         );

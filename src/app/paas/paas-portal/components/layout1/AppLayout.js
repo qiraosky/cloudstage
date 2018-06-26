@@ -22,8 +22,8 @@ class AppLayout extends React.Component {
                 <AppHeader/>
                 <Layout>
                     <AppLeftSider/>
-                    <Layout style={{ padding: '0 24px 24px' }}>
-                        <AppBreadcrumb/>
+                    <Layout style={{ padding: '24px 24px 24px' }}>
+                        {/* <AppBreadcrumb/> */}
                         <AppContent>
                             {this.props.children}
                         </AppContent>
