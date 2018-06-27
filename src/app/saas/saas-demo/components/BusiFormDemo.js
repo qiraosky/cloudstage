@@ -33,14 +33,43 @@ const treeData = [{
 class FormLayout extends React.Component {
     constructor(props){
         super(props)
-        this.state = {}
+        this.state = {
+            user:{
+                userId:"",
+                name:{
+                    first:"",
+                    last:""
+                },
+                email:""
+            }
+        }
         if(this.props.operType == 'update'){
             console.log(this.props.paramobj)
             this.state.userId = this.props.paramobj.userId;
             this.state.name = this.props.paramobj.name;
             this.loadUser(this.state.userId);
         }
+
+        this.handleChange = this.handleChange.bind(this);
+        this.saveBean = this.saveBean.bind(this);
     }
+
+    handleChange = (formName) => ((event) => {
+        if(formName == "name"){
+            console.log(event)
+            let value = event.target.value;
+            this.state.user.name.first = value.substr(0,1)
+            this.state.user.name.last = value.substr(1)
+        }else{
+            this.state.user[formName] = event.target.value;
+        }
+        this.setState({user:this.state.user}); 
+    })
+    
+    handleSelectChange = (formName) => ((value) => {
+        this.state.user[formName] = value;
+        this.setState({user:this.state.user}); 
+    })
 
 
     loadUser(userId){
@@ -50,11 +79,23 @@ class FormLayout extends React.Component {
               userId:userId
             }
           }).then((req)=>{
-            console.log(req)
+            this.setState({
+                user:req.data.user
+            })
+          })
+    }
+
+    saveBean = ()=>{
+        http({
+            url:this.props.operType == 'add'?'/demo/saveData':'/demo/updateData',
+            data:this.state.user
+          }).then((req)=>{
+            message.success("保存成功");
           })
     }
 
     render(){
+        var value = this.state.user.name.first;
         return(
             <div style={{padding:"0px 10px 10px 10px"}}>
                 <Divider orientation="right">
@@ -67,7 +108,7 @@ class FormLayout extends React.Component {
                         用户ID：
                     </Col>
                     <Col className="gutter-row" span={7}>
-                        <Input disabled/>
+                        <Input disabled value={this.state.user.userId}/>
                     </Col>
                     <Col className="gutter-row" span={2}>
                     </Col>
@@ -75,7 +116,7 @@ class FormLayout extends React.Component {
                         用户名：
                     </Col>
                     <Col className="gutter-row" span={7}>
-                        <Input/>
+                        <Input value={this.state.user.name.first + this.state.user.name.last} onChange={this.handleChange("name")}/>
                     </Col>
                 </Row>
                 <Row gutter={16} style={{padding:"6px 0px 6px 0px"}}>
@@ -83,7 +124,7 @@ class FormLayout extends React.Component {
                         性别
                     </Col>
                     <Col className="gutter-row" span={7}>
-                        <Select defaultValue="male" style={{ width: 120 }} >
+                        <Select defaultValue="male" style={{ width: 120 }} value={this.state.user.gender} onSelect={this.handleSelectChange("gender")}>
                             <Option value="male">男</Option>
                             <Option value="famale">女</Option>
                         </Select>
@@ -126,7 +167,7 @@ class FormLayout extends React.Component {
                         电子邮箱
                     </Col>
                     <Col className="gutter-row" span={7}>
-                        <Input/>
+                        <Input value={this.state.user.email} onChange={this.handleChange("email")}/>
                     </Col>
                     <Col className="gutter-row" span={2}>
                     </Col>
@@ -139,7 +180,7 @@ class FormLayout extends React.Component {
                     <Col span={7}></Col>
                     <Col span={3}>
                         <Link to='/demo/busiTableDemo' title='提交' >
-                            <Button type="primary">提交</Button>
+                            <Button type="primary" onClick={this.saveBean} >提交</Button>
                         </Link>
                     </Col>
                     <Col span={3}>

@@ -66,7 +66,7 @@ class DetailLayout extends React.Component {
                         性别
                     </Col>
                     <Col className="gutter-row" span={7}>
-                        {this.state.user.gender}
+                        {this.state.user.gender=='male'?"男":(this.state.user.gender=="famale"?"女":"未知")}
                     </Col>
                     <Col className="gutter-row" span={2}>
                     </Col>

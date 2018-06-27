@@ -47,6 +47,7 @@ class BusiTableGrid extends React.Component{
         { text: '女', value: 'female' },
       ],
       width: '20%',
+      render: gender => (gender=='male'?"男":(gender=="famale"?"女":"未知")),
     }, {
       title: '电子邮箱',
       dataIndex: 'email',
@@ -114,6 +115,7 @@ class BusiTableGrid extends React.Component{
         this.fetch();
       }
     
+
     
     render(){
         return (

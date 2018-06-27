@@ -11,7 +11,7 @@ const demoGridDataList = [];
 for(let i=1;i<=30;i++){
     let bean = {
         userId:uuid.v4(),
-        gender:i%2?'男':'女',
+        gender:i%2?'male':'famale',
         name:{
             first:"姓名",
             last:i
@@ -85,12 +85,14 @@ const fastApi = {
         res.send({ status: 'not found', user: {}}); 
     },
     'POST /demo/saveData':(req, res) => {
+        console.log("saveData processing")
         let param = req.body;
         param.userId = uuid.v4()
-        demoGridDataList.push(param)
+        demoGridDataList.unshift(param)
         res.send({ status: 'ok', user: demoGridDataList[demoGridDataList.length-1]}); 
     },
     'POST /demo/updateData':(req, res) => {
+        console.log("updateData processing")
         let param = req.body;
         for(let i=0;i<demoGridDataList.length;i++){
             if(param.userId == demoGridDataList[i].userId){
