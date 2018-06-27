@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Row, Col, Input, Button, Icon , Divider , Select , DatePicker , Switch , TreeSelect , TreeNode} from 'antd';
+import { Form, Row, Col, Input, Button, Icon , Divider , Select , DatePicker , Switch , TreeSelect , message} from 'antd';
 import { Link } from 'react-router-dom';
 import { getUrlParam } from '../../../utils/UrlUtils';
 import { http } from '../../../utils/HttpUtils';
@@ -44,7 +44,6 @@ class FormLayout extends React.Component {
             }
         }
         if(this.props.operType == 'update'){
-            console.log(this.props.paramobj)
             this.state.userId = this.props.paramobj.userId;
             this.state.name = this.props.paramobj.name;
             this.loadUser(this.state.userId);
@@ -56,7 +55,6 @@ class FormLayout extends React.Component {
 
     handleChange = (formName) => ((event) => {
         if(formName == "name"){
-            console.log(event)
             let value = event.target.value;
             this.state.user.name.first = value.substr(0,1)
             this.state.user.name.last = value.substr(1)

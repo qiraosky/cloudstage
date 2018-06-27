@@ -49,7 +49,7 @@ class BusiTableGrid extends React.Component{
       width: '20%',
       render: gender => (gender=='male'?"男":(gender=="famale"?"女":"未知")),
     }, {
-      title: '电子邮箱',
+      title: '电子邮箱(账号)',
       dataIndex: 'email',
   },{
     title: '操作',
@@ -70,7 +70,7 @@ class BusiTableGrid extends React.Component{
 
 
 
-      handleTableChange = (pagination, filters, sorter) => {
+    handleTableChange = (pagination, filters, sorter) => {
         const pager = { ...this.state.pagination };
         pager.current = pagination.current;
         this.setState({
