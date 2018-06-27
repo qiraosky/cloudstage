@@ -12,7 +12,8 @@ const SAAS_DEMO_ROUTER = {
         {url:'iframeDemo',componentName:'IFrameDemo'},
         {url:'paramDemo',componentName:'ParamDemo'},
         {url:'httpUtilsDemo',componentName:'HttpUtilsDemo'},
-        {url:'busiFormDemo',componentName:'BusiFormDemo'},
+        {url:'busiFormDemoAdd',componentName:'BusiFormDemo'},
+        {url:'busiFormDemoUpdate',componentName:'BusiFormDemo'},
         {url:'busiTableDemo',componentName:'BusiTableDemo'},
         {url:'busiDetailDemo',componentName:'BusiDetailDemo'}
     ]

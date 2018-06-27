@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form, Row, Col, Input, Button, Icon , Divider , Select , DatePicker , Switch , TreeSelect , TreeNode} from 'antd';
 import { Link } from 'react-router-dom';
+import { getUrlParam } from '../../../utils/UrlUtils';
+import { http } from '../../../utils/HttpUtils';
 
 const treeData = [{
     label: '总公司',
@@ -29,6 +31,28 @@ const treeData = [{
 
 
 class FormLayout extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {}
+        if(this.props.operType == 'update'){
+            console.log(this.props.paramobj)
+            this.state.userId = this.props.paramobj.userId;
+            this.state.name = this.props.paramobj.name;
+            this.loadUser(this.state.userId);
+        }
+    }
+
+
+    loadUser(userId){
+        http({
+            url:'/demo/getData',
+            data:{
+              userId:userId
+            }
+          }).then((req)=>{
+            console.log(req)
+          })
+    }
 
     render(){
         return(
@@ -97,6 +121,20 @@ class FormLayout extends React.Component {
                     />
                     </Col>
                 </Row>
+                <Row gutter={16} style={{padding:"6px 0px 6px 0px"}}>
+                    <Col className="gutter-row" span={2} style={{fontWeight:"bold"}}>
+                        电子邮箱
+                    </Col>
+                    <Col className="gutter-row" span={7}>
+                        <Input/>
+                    </Col>
+                    <Col className="gutter-row" span={2}>
+                    </Col>
+                    <Col className="gutter-row" span={2} style={{fontWeight:"bold"}}>
+                    </Col>
+                    <Col className="gutter-row" span={7}>
+                    </Col>
+                </Row>
                 <Row gutter={16} style={{padding:"26px 0px 6px 0px"}}>
                     <Col span={7}></Col>
                     <Col span={3}>
@@ -125,8 +163,17 @@ class FormLayout extends React.Component {
 
 class BusiFormDemo extends React.Component{
     render(){
+        let operType = "";
+        let paramobj = {};
+        if("/demo/busiFormDemoAdd" == this.props.location.pathname){
+            operType = 'add';
+        }
+        if("/demo/busiFormDemoUpdate" == this.props.location.pathname){
+            operType = 'update';
+            paramobj = getUrlParam(this.props.location.search);
+        }
         return (
-            <div><FormLayout/> </div>
+            <div><FormLayout operType={operType} paramobj={paramobj} /> </div>
         );
     }
 }

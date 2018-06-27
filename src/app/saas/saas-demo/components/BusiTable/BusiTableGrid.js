@@ -16,7 +16,6 @@ class BusiTableGrid extends React.Component{
 
 
     deleteData = (userId) => {
-      console.log(userId)
         http({
           url:'/demo/deleteGridData',
           data:{
@@ -57,9 +56,9 @@ class BusiTableGrid extends React.Component{
     render: (text, record) => {
       return (
       <span>
-        <Link to={{pathname:'/demo/BusiDetailDemo',search:`?name=${record.userId}`}} title='详情'  >详情</Link>
+        <Link to={{pathname:'/demo/BusiDetailDemo',search:`?userId=${record.userId}&name=abc`}} title='详情'  >详情</Link>
         <Divider type="vertical" />
-        <Link to={{pathname:'/demo/busiFormDemo',search:`?name=${record.userId}`}} title='更新'  >更新</Link>
+        <Link to={{pathname:'/demo/busiFormDemoUpdate',search:`?userId=${record.userId}&name=abc`}} title='更新'  >更新</Link>
         <Divider type="vertical" />
         <Popconfirm title="是否删除?" onConfirm={() => this.deleteData(record.userId)}>
           <a href="javascript:;">删除</a>
@@ -119,7 +118,7 @@ class BusiTableGrid extends React.Component{
     render(){
         return (
             <div>
-                <Link to='/demo/busiFormDemo' title='新增' >
+                <Link to='/demo/busiFormDemoAdd' title='新增' >
                   <Button style={{marginTop:'16px'}} type="primary">新增</Button>
                 </Link>
                 <Table
