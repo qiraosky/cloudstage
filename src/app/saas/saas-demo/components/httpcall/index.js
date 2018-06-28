@@ -1,8 +1,8 @@
 import React from 'react'
-import { httpGet, httpPost } from '../../../utils/HttpUtils';
-import { Button } from 'antd';
+import { httpGet, httpPost } from '../../../../utils/HttpUtils';
+import { Button , Card } from 'antd';
 
-class HttpUtilsDemo extends React.Component {
+class HttpCall extends React.Component {
     constructor(props){
         super(props)
         this.state = { 
@@ -67,15 +67,15 @@ class HttpUtilsDemo extends React.Component {
 
     render() {
         return (
-            <div>
+        <Card title="传参演示" style={{ width:'100%',height:'100%' }} extra={<a href="#/demo/index">返回</a>}>
                 <Button type="primary" onClick={this.getUserList}>点击Get查询</Button><br/>
                 {this.state.dataGetUserList}<br/><br/>
                 <Button type="primary" onClick={this.postUserList}>点击Postt查询</Button><br/>
                 {this.state.dataPostUserList}<br/><br/>
                 <Button type="primary" onClick={this.getSomeReqSendError}>点击报错提示</Button>
                 
-            </div>
+            </Card>
         )
     } 
 }
-export default HttpUtilsDemo;
+export default HttpCall;

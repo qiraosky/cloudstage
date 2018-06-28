@@ -1,50 +1,36 @@
 import Loadable from 'react-loadable';
 import Loading from '../../components/loading/RemoteComponentLoading';
-
-const SaasDemoIndex = Loadable({
+/*************************************************************************************************** */
+const Index = Loadable({
     loader: () =>
-      import(/* webpackChunkName: "saas-demo/demoIndex" */ "./components/DemoIndex.js"),
+      import(/* webpackChunkName: "saas-demo/index" */ "./components"),
       loading: Loading
 });
-const IFrameDemo = Loadable({
+/*************************************************************************************************** */
+const IframeImport = Loadable({
     loader: () =>
-      import(/* webpackChunkName: "saas-demo/iframeDemo" */ "./components/IFrameDemo"),
+      import(/* webpackChunkName: "saas-demo/iframeimport" */ "./components/iframeimport"),
       loading: Loading
 });
-const ParamDemo = Loadable({
+/*************************************************************************************************** */
+const ParamTransmit = Loadable({
     loader: () =>
-      import(/* webpackChunkName: "saas-demo/paramDemo" */ "./components/ParamDemo"),
+      import(/* webpackChunkName: "saas-demo/paramtransmit" */ "./components/paramtransmit"),
       loading: Loading
 });
-const HttpUtilsDemo = Loadable({
+/*************************************************************************************************** */
+const HttpCall = Loadable({
     loader: () =>
-      import(/* webpackChunkName: "saas-demo/httpUtilsDemo" */ "./components/HttpUtilsDemo"),
+      import(/* webpackChunkName: "saas-demo/httpcall" */ "./components/httpcall"),
       loading: Loading
 });
-const BusiFormDemo = Loadable({
-    loader: () =>
-      import(/* webpackChunkName: "saas-demo/busiFormDemo" */ "./components/BusiFormDemo"),
-      loading: Loading
-});
-const BusiTableDemo = Loadable({
-    loader: () =>
-      import(/* webpackChunkName: "saas-demo/busiTableDemo" */ "./components/BusiTableDemo"),
-      loading: Loading
-});
-const BusiDetailDemo = Loadable({
-    loader: () =>
-      import(/* webpackChunkName: "saas-demo/busiDetailDemo" */ "./components/BusiDetailDemo"),
-      loading: Loading
-});
+/*************************************************************************************************** */
 
 
 
 export default {
-    SaasDemoIndex,
-    IFrameDemo,
-    ParamDemo,
-    HttpUtilsDemo,
-    BusiFormDemo,
-    BusiTableDemo,
-    BusiDetailDemo
+    Index,
+    IframeImport,
+    ParamTransmit,
+    HttpCall
 }

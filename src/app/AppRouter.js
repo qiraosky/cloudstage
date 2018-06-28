@@ -8,14 +8,10 @@ import SaasDemo from './saas/saas-demo';
 const SAAS_DEMO_ROUTER = {
     basePath:'demo',
     routerList: [
-        {url:'index',componentName:'SaasDemoIndex'},
-        {url:'iframeDemo',componentName:'IFrameDemo'},
-        {url:'paramDemo',componentName:'ParamDemo'},
-        {url:'httpUtilsDemo',componentName:'HttpUtilsDemo'},
-        {url:'busiFormDemoAdd',componentName:'BusiFormDemo'},
-        {url:'busiFormDemoUpdate',componentName:'BusiFormDemo'},
-        {url:'busiTableDemo',componentName:'BusiTableDemo'},
-        {url:'busiDetailDemo',componentName:'BusiDetailDemo'}
+        {url:'index',componentName:'Index'},
+        {url:'iframeimport',componentName:'IframeImport'},
+        {url:'paramtransmit',componentName:'ParamTransmit'},
+        {url:'httpcall',componentName:'HttpCall'},
     ]
 }
 
@@ -28,7 +24,6 @@ class AppRouter extends React.Component {
                 <Route key={key} path={url} component={component[item.componentName]} />
             )
         })
-
     }
 
     render() {
