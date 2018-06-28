@@ -8,7 +8,7 @@ const uuid = require('node-uuid');
 
 const projectList = [];
 
-for(let i=1;i<=30;i++){
+for(let i=1;i<=60;i++){
     let bean = {
         projectId:uuid.v4(),
         projectCode:`AWVBD${i<10?"0"+i:i}`,

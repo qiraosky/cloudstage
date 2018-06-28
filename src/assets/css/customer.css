@@ -15,3 +15,13 @@
 .ant-advanced-search-form .ant-form-item-control-wrapper {
   flex: 1;
 }
+
+
+.antd-custom-table-head {
+  font-size:14px;
+  font-weight: bold;
+}
+
+.antd-custom-table-body {
+  font-size:14px;
+}

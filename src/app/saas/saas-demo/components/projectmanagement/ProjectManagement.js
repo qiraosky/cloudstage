@@ -12,29 +12,32 @@ class ProjectManagementGrid extends React.Component {
             search:{},
             queryParam:{},
             data: [],
-            pagination: {showQuickJumper:true,pageSize:5},
+            pagination: {showQuickJumper:true,pageSize:10},
             loading: false
         };
     }
 
     columns = [
           {
-            title: '项目编码',
+            title: (<span className="antd-custom-table-head">项目编码</span>), 
             dataIndex: 'projectCode',
             sorter: true,
             fixed: 'left',
             width: 120,
+            className:"antd-custom-table-body",
             render: (projectCode) => (projectCode),
           },{
-            title: '项目名称',
+            title: (<span className="antd-custom-table-head">项目名称</span>),
             dataIndex: 'name',
             sorter: true,
             fixed: 'left',
             width: 220,
+            className:"antd-custom-table-body",
           },{
-            title: '项目状态',
+            title: (<span className="antd-custom-table-head">项目状态</span>),
             dataIndex: 'status',
             sorter: true,
+            className:"antd-custom-table-body",
             filters: [
               { text: '开始', value: 'start' },
               { text: '实施中', value: 'pending' },
@@ -48,26 +51,31 @@ class ProjectManagementGrid extends React.Component {
                 }
             },
           },{
-            title: '开始时间',
+            title: (<span className="antd-custom-table-head">开始时间</span>),
             dataIndex: 'starttime',
+            className:"antd-custom-table-body",
             sorter: true,
             render: (starttime) => (moment(starttime).format("YYYY-MM-DD")),
           },{
-            title: '结束时间',
+            title: (<span className="antd-custom-table-head">结束时间</span>),
             dataIndex: 'endtime',
+            className:"antd-custom-table-body",
             sorter: true,
             render: (endtime) => (moment(endtime).format("YYYY-MM-DD")),
           },{
-            title: '项目所在地',
+            title: (<span className="antd-custom-table-head">项目所在地</span>),
             dataIndex: 'location',
+            className:"antd-custom-table-body",
             sorter: true
           },{
-            title: '负责人',
+            title: (<span className="antd-custom-table-head">负责人</span>),
             dataIndex: 'principal',
+            className:"antd-custom-table-body",
             sorter: true
           },{
-            title: '操作',
+            title: (<span className="antd-custom-table-head">操作</span>),
             key: 'action',
+            className:"antd-custom-table-body",
             fixed: 'right',
             width:170,
             render: (text, record) => {
@@ -138,6 +146,7 @@ class ProjectManagementGrid extends React.Component {
             <Table
                     columns={this.columns}
                     bordered
+                    size="small"
                     rowKey={record => record.projectId}
                     dataSource={this.state.data}
                     pagination={this.state.pagination}
