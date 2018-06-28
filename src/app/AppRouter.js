@@ -12,6 +12,9 @@ const SAAS_DEMO_ROUTER = {
         {url:'iframeimport',componentName:'IframeImport'},
         {url:'paramtransmit',componentName:'ParamTransmit'},
         {url:'httpcall',componentName:'HttpCall'},
+        {url:'projectmanagement',componentName:'ProjectManagement'},
+        {url:'projectoperation',componentName:'ProjectOperation'},
+        {url:'projectdetail',componentName:'ProjectDetail'},
     ]
 }
 

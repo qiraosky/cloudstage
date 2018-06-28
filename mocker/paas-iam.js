@@ -62,6 +62,9 @@ const siderMenuJson1 = [
                     {key:"a2312",name:'一二三四五六七八九十'}
                 ]},
             {key:"a24",name:'三级菜单7'},
+            {key:"a25",name:'三级菜单8'},
+            {key:"a26",name:'三级菜单9'},
+            {key:"a27",name:'三级菜单10'},
             ]}
         ]
     }
@@ -69,41 +72,33 @@ const siderMenuJson1 = [
 ];
 
 const siderMenuJson2 = [
-    {key:"b1",name:'申报管理',icon:'book',
+    {key:"b1",name:'项目管理',icon:'book',
         children:[
-            {key:"b11",name:'投资立项申请'},
-            {key:"b12",name:'投资项目立项计划',uri:{pathname:'/demo/ParamDemo',search:'?name=1'}},
-            {key:"b13",name:'项目咨询'},
-            {key:"b14",name:'项目申报'}
+            {key:"b11",name:'概况'},
+            {key:"b12",name:'团队',uri:{pathname:'/demo/ParamDemo',search:'?name=1'}},
+            {key:"b13",name:'动态'},
+            {key:"b14",name:'任务'}
         ]
     },
-    {key:"b2",name:'项目计划',icon:'compass',
+    {key:"b2",name:'文档管理',icon:'compass',
             children:[
-                {key:"b21",name:'预算分配'},
-                {key:"b22",name:'资金计划上报'},
-                {key:"b23",name:'付款管理'},
-                {key:"b24",name:'付款计划'}
+                {key:"b21",name:'需求文档'},
+                {key:"b22",name:'设计文档'},
+                {key:"b23",name:'开发文档'},
+                {key:"b24",name:'测试用例'}
             ]
     },
-    {key:"b3",name:'项目设计',icon:'share-alt',
+    {key:"b3",name:'缺陷管理',icon:'share-alt',
         children: [
-                {key:"b31",name:'项目设计'},
-                {key:"b32",name:'项目变更'}
+                {key:"b31",name:'缺陷列表'}
             ]
     },
-    {key:"b4",name:'项目实施',icon:'tool',
+    {key:"b4",name:'组织管理',icon:'tool',
         children:[
-            {key:"b41",name:'项目开工'},
-            {key:"b42",name:'项目完工'},
-            {key:"b43",name:'项目预警'},
-            {key:"b44",name:'工作量管理'},
-            {key:"b45",name:'委托施工'}
-        ]
-    },
-    {key:"b5",name:'领退料管理',icon:'tag',
-        children:[
-            {key:"b51",name:'领退料管理'},
-            {key:"b52",name:'库存余额查询'}
+            {key:"b41",name:'部门'},
+            {key:"b42",name:'权限'},
+            {key:"b43",name:'公司'},
+            {key:"b44",name:'动态'}
         ]
     }
 ];

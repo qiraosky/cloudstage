@@ -25,12 +25,31 @@ const HttpCall = Loadable({
       loading: Loading
 });
 /*************************************************************************************************** */
+const ProjectManagement = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/projectmanagement" */ "./components/projectmanagement/ProjectManagement"),
+      loading: Loading
+});
 
+const ProjectOperation = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/projectmanagement" */ "./components/projectmanagement/ProjectOperation"),
+      loading: Loading
+});
 
+const ProjectDetail = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/projectmanagement" */ "./components/projectmanagement/ProjectDetail"),
+      loading: Loading
+});
 
+/************************************************************************************************** */
 export default {
     Index,
     IframeImport,
     ParamTransmit,
-    HttpCall
+    HttpCall,
+    ProjectManagement,
+    ProjectOperation,
+    ProjectDetail
 }
