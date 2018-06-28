@@ -26,10 +26,10 @@ const iam = {
     //顶部menu
     'POST /paas-iam/menu/getTopMenu':(req, res) =>{
         const topMenuData = [
-            {name:"项目管理",keyCode:"key1"},
-            {name:"预算管理",keyCode:"key2"},
-            {name:"统计分析",keyCode:"key3"},
-            {name:"系统管理",keyCode:"key4"}
+            {name:"系统演示",keyCode:"key1"},
+            {name:"项目管理",keyCode:"key2"},
+            {name:"工作流管理",keyCode:"key3"},
+            {name:"权限管理",keyCode:"key4"}
         ]
         return res.send(topMenuData);
     }
@@ -42,108 +42,108 @@ const iam = {
 
 //******************************************************************************************* */
 //菜单数据
+
 const siderMenuJson1 = [
-    {key:"a",name:'申报管理',icon:'book',
+    {key:"a1",name:'演示菜单',icon:'tag',
         children:[
-            {key:"a1",name:'投资立项申请',uri:'/demo/index'},
-            {key:"a2",name:'投资项目立项计划',uri:{pathname:'/demo/ParamDemo',search:'?name=1'}},
-            {key:"a3",name:'项目咨询',uri:'/demo/iframeDemo'},
-            {key:"a4",name:'项目申报',uri:''}
+            {key:"a11",name:'索引页',uri:{pathname:'/demo/index'}},
+            {key:"a12",name:'框架引入演示',uri:{pathname:'/demo/iframeimport'}},
+            {key:"a13",name:'传参演示',uri:{pathname:'/demo/paramtransmit',search:'?name=1'}},
+            {key:"a14",name:'Http调用演示',uri:{pathname:'/demo/httpcall'}},
         ]
     },
-    {key:"b",name:'项目计划',icon:'compass',
-            children:[
-                {key:"b1",name:'预算分配'},
-                {key:"b2",name:'资金计划上报'},
-                {key:"b3",name:'付款管理'},
-                {key:"b4",name:'付款计划'}
-            ]
-    },
-    {key:"c",name:'项目设计',icon:'share-alt',
-        children: [
-                {key:"c1",name:'项目设计'},
-                {key:"c2",name:'项目变更'}
-            ]
-    },
-    {key:"d",name:'项目实施',icon:'tool',
+    {key:"a2",name:'多级菜单演示',icon:'tool',
         children:[
-            {key:"d1",name:'项目开工'},
-            {key:"d2",name:'项目完工'},
-            {key:"d3",name:'项目预警'},
-            {key:"d4",name:'工作量管理'},
-            {key:"d5",name:'委托施工'}
-        ]
-    },
-    {key:"e",name:'领退料管理',icon:'tag',
-        children:[
-            {key:"e1",name:'领退料管理'},
-            {key:"e2",name:'库存余额查询'}
-        ]
-    }
-];
-
-
-const siderMenuJson2 = [
-    {key:"d",name:'一级菜单二A',icon:'tool',
-        children:[
-            {key:"d1",name:'二级菜单1'},
-            {key:"d2",name:'二级菜单2'},
-            {key:"d3",name:'二级菜单3'},
-            {key:"d4",name:'二级菜单4'},
-            {key:"d5",name:'一二三四五六七八九十',children:[
-                {key:"da1",name:'三级菜单6',children:[
-                    {key:"daa1",name:'四级菜单1'},
-                    {key:"daa2",name:'一二三四五六七八九十'}
+            {key:"a21",name:'二级菜单1'},
+            {key:"a22",name:'二级菜单2'},
+            {key:"a23",name:'一二三四五六七八九十',children:[
+                {key:"a231",name:'三级菜单6',children:[
+                    {key:"a2311",name:'四级菜单1'},
+                    {key:"a2312",name:'一二三四五六七八九十'}
                 ]},
-            {key:"da2",name:'三级菜单7'},
+            {key:"a24",name:'三级菜单7'},
             ]}
         ]
-    },
-    {key:"e",name:'一级菜单二B',icon:'tag',
+    }
+    
+];
+
+const siderMenuJson2 = [
+    {key:"b1",name:'申报管理',icon:'book',
         children:[
-            {key:"e1",name:'领退料管理'},
-            {key:"e2",name:'库存余额查询'}
+            {key:"b11",name:'投资立项申请'},
+            {key:"b12",name:'投资项目立项计划',uri:{pathname:'/demo/ParamDemo',search:'?name=1'}},
+            {key:"b13",name:'项目咨询'},
+            {key:"b14",name:'项目申报'}
+        ]
+    },
+    {key:"b2",name:'项目计划',icon:'compass',
+            children:[
+                {key:"b21",name:'预算分配'},
+                {key:"b22",name:'资金计划上报'},
+                {key:"b23",name:'付款管理'},
+                {key:"b24",name:'付款计划'}
+            ]
+    },
+    {key:"b3",name:'项目设计',icon:'share-alt',
+        children: [
+                {key:"b31",name:'项目设计'},
+                {key:"b32",name:'项目变更'}
+            ]
+    },
+    {key:"b4",name:'项目实施',icon:'tool',
+        children:[
+            {key:"b41",name:'项目开工'},
+            {key:"b42",name:'项目完工'},
+            {key:"b43",name:'项目预警'},
+            {key:"b44",name:'工作量管理'},
+            {key:"b45",name:'委托施工'}
+        ]
+    },
+    {key:"b5",name:'领退料管理',icon:'tag',
+        children:[
+            {key:"b51",name:'领退料管理'},
+            {key:"b52",name:'库存余额查询'}
         ]
     }
 ];
 
 
 const siderMenuJson3 = [
-    {key:"d",name:'一级菜单三A',icon:'tool',
+    {key:"c1",name:'流程定义',icon:'tool',
         children:[
-            {key:"d1",name:'项目开工'},
-            {key:"d2",name:'项目完工'},
-            {key:"d3",name:'项目预警'},
-            {key:"d4",name:'工作量管理'},
-            {key:"d5",name:'委托施工'}
+            {key:"c11",name:'流程定义列表'},
+            {key:"c12",name:'参与者配置'},
+            {key:"c13",name:'流程分类'}
         ]
     },
-    {key:"e",name:'一级菜单三B',icon:'tag',
+    {key:"c2",name:'流程实例',icon:'tag',
         children:[
-            {key:"e1",name:'领退料管理'},
-            {key:"e2",name:'库存余额查询'}
+            {key:"c21",name:'流程实例列表'}
+        ]
+    }
+]; 
+
+
+const siderMenuJson4 = [
+    {key:"d1",name:'用户管理',icon:'tag',
+        children:[
+            {key:"d11",name:'账号管理'},
+            {key:"d12",name:'用户管理'}
+        ]
+    },
+    {key:"d2",name:'权限管理',icon:'tool',
+        children:[
+            {key:"d21",name:'角色管理'},
+            {key:"d22",name:'功能权限'},
+            {key:"d23",name:'数据权限'},
+            {key:"d24",name:'资源管理'}
         ]
     }
 ];
 
 
-const siderMenuJson4 = [
-    {key:"d",name:'一级菜单四A',icon:'tool',
-        children:[
-            {key:"d1",name:'项目开工'},
-            {key:"d2",name:'项目完工'},
-            {key:"d3",name:'项目预警'},
-            {key:"d4",name:'工作量管理'},
-            {key:"d5",name:'委托施工'}
-        ]
-    },
-    {key:"e",name:'一级菜单四B',icon:'tag',
-        children:[
-            {key:"e1",name:'领退料管理'},
-            {key:"e2",name:'库存余额查询'}
-        ]
-    }
-]; 
+
 
 
 /* const menuJson1 = [
