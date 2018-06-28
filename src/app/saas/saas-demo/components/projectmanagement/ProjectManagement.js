@@ -102,7 +102,7 @@ class ProjectManagementGrid extends React.Component {
         this.fetch(this.state.queryParam);
       }
 
-    fetch = (params={},err,commond) => {
+    fetch = (params={},errqe,commond) => {
         if(commond == "clear"){
           this.state.queryParam = {};
         }
