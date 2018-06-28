@@ -6,19 +6,20 @@ const saasDemo = require('./mocker/saas-demo');
 
 const uuid = require('node-uuid');
 
-const demoGridDataList = [];
+const projectList = [];
 
 for(let i=1;i<=30;i++){
     let bean = {
-        userId:uuid.v4(),
-        gender:i%2?'male':'famale',
-        name:{
-            first:"姓名",
-            last:i
-        },
-        email:`admin${i}@admin.com`
+        projectId:uuid.v4(),
+        projectCode:`AWVBD${i<10?"0"+i:i}`,
+        name:`项目${i}`,
+        status:i%3==0?'end':i%2==0?'pending':'start',
+        starttime:"2018-01-01",
+        endtime:"2018-02-01",
+        location:i%3==0?'北京':i%2==0?'上海':'广州',
+        principal:i%3==0?'杰克':i%2==0?'约翰':'彼得',
     }
-    demoGridDataList.push(
+    projectList.push(
         bean
     )
     console.log(JSON.stringify(bean))
@@ -28,16 +29,16 @@ for(let i=1;i<=30;i++){
 //在此页面的接口调整保存即生效
 const fastApi = {
     'GET /demo/test': (req, res) => {
-        res.send({ status: 'ok', message: '333保存成功 ！' });
+        res.send({ status: 'ok', message: '测试成功 ！' });
     },
-    'POST /demo/gridData':(req, res) => {
+    'POST /demo/listProject':(req, res) => {
         let param = req.body;
         console.log(param)
         let returnVal = {
             info: {
                 "seed": "0e03f93fd1dad64e", 
                 "pageSize": 10, 
-                "total":demoGridDataList.length,
+                "total":projectList.length,
                 "page": 1, 
                 "version": "1.2"
             },
@@ -54,18 +55,18 @@ const fastApi = {
         }
         let start = param.pageSize * param.page ;
         for(let i = start  ;i< start + param.pageSize; i++){
-               if(demoGridDataList[i])
-                    returnVal.results.push(demoGridDataList[i]);
+               if(projectList[i])
+                    returnVal.results.push(projectList[i]);
         }
 
         res.send(returnVal);
     },
-    'POST /demo/deleteGridData':(req, res) => {
+    'POST /demo/deleteProject':(req, res) => {
         let param = req.body;
         let deleteCount = 0;
-        for(let i=0;i<demoGridDataList.length;i++){
-            if(param.userId == demoGridDataList[i].userId){
-                let bean = demoGridDataList.splice(i,1);
+        for(let i=0;i<projectList.length;i++){
+            if(param.projectId == projectList[i].projectId){
+                let bean = projectList.splice(i,1);
                 deleteCount ++ ;
                 console.log(bean)
                 break;
@@ -73,31 +74,31 @@ const fastApi = {
         }
         res.send({ status: 'ok', message: '删除成功 ！' ,deleteCount: deleteCount}); 
     },
-    'POST /demo/getData':(req, res) => {
+    'POST /demo/getProject':(req, res) => {
         let param = req.body;
-        for(let i=0;i<demoGridDataList.length;i++){
-            if(param.userId == demoGridDataList[i].userId){
-                let bean = demoGridDataList[i];
+        for(let i=0;i<projectList.length;i++){
+            if(param.projectId == projectList[i].projectId){
+                let bean = projectList[i];
                 res.send({ status: 'ok', user: bean}); 
                 return;
             }
         }
         res.send({ status: 'not found', user: {}}); 
     },
-    'POST /demo/saveData':(req, res) => {
+    'POST /demo/saveProject':(req, res) => {
         console.log("saveData processing")
         let param = req.body;
-        param.userId = uuid.v4()
-        demoGridDataList.unshift(param)
-        res.send({ status: 'ok', user: demoGridDataList[demoGridDataList.length-1]}); 
+        param.projectId = uuid.v4()
+        projectList.unshift(param)
+        res.send({ status: 'ok', user: projectList[projectList.length-1]}); 
     },
-    'POST /demo/updateData':(req, res) => {
+    'POST /demo/updateProject':(req, res) => {
         console.log("updateData processing")
         let param = req.body;
-        for(let i=0;i<demoGridDataList.length;i++){
-            if(param.userId == demoGridDataList[i].userId){
-                demoGridDataList[i] = param;
-                res.send({ status: 'ok', user: demoGridDataList[i]}); 
+        for(let i=0;i<projectList.length;i++){
+            if(param.projectId == projectList[i].projectId){
+                projectList[i] = param;
+                res.send({ status: 'ok', user: projectList[i]}); 
                 return;
             }
         }

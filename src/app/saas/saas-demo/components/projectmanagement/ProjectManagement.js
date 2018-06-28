@@ -83,7 +83,10 @@ class ProjectManagement extends React.Component {
         children.push(
             <SearchFormItem key="principal" itemKey="principal" name="负责人" hide={!this.state.expand}
                 getFieldDecorator={getFieldDecorator}>
-                <Input placeholder="负责人" />
+                <Select span={6}>
+                      <Select.Option value="zhangsan">张三</Select.Option>
+                      <Select.Option value="lisi">李四</Select.Option>
+               </Select>
             </SearchFormItem>
         );
 

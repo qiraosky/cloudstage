@@ -13,7 +13,8 @@ const SAAS_DEMO_ROUTER = {
         {url:'paramtransmit',componentName:'ParamTransmit'},
         {url:'httpcall',componentName:'HttpCall'},
         {url:'projectmanagement',componentName:'ProjectManagement'},
-        {url:'projectoperation',componentName:'ProjectOperation'},
+        {url:'projectadd',componentName:'ProjectOperation'},
+        {url:'projectupdate',componentName:'ProjectOperation'},
         {url:'projectdetail',componentName:'ProjectDetail'},
     ]
 }
