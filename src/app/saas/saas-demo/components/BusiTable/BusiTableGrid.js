@@ -23,7 +23,6 @@ class BusiTableGrid extends React.Component{
           }
         }).then((req)=>{
           message.success('删除成功');
-          console.log("pagination",this.state.pagination)
           this.fetch({
             pageSize:this.state.pagination.pageSize,
             page:this.state.pagination.current
@@ -86,7 +85,6 @@ class BusiTableGrid extends React.Component{
         });
       }
       fetch = (params = {}) => {
-        console.log('params:', params);
         this.setState({ loading: true });
         http({
           url: 'http://127.0.0.1:3001/demo/gridData',
@@ -102,7 +100,6 @@ class BusiTableGrid extends React.Component{
           const results = req.data.results;
           // Read total count from server
           // pagination.total = data.totalCount;
-          console.log(req.data)
           pagination.total = info.total;
           this.setState({
             loading: false,
@@ -118,6 +115,7 @@ class BusiTableGrid extends React.Component{
 
     
     render(){
+      console.log(this.props)
         return (
             <div>
                 <Link to='/demo/busiFormDemoAdd' title='新增' >

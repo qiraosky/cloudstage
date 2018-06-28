@@ -1,7 +1,8 @@
 import React from 'react';
+import { Spin } from 'antd';
 
 const RemoteComponentLoading = () =>(
-    <div>数据加载中....</div>
+    <Spin />
 )
 
 export default RemoteComponentLoading;
