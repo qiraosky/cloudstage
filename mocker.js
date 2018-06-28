@@ -14,8 +14,8 @@ for(let i=1;i<=30;i++){
         projectCode:`AWVBD${i<10?"0"+i:i}`,
         name:`项目${i}`,
         status:i%3==0?'end':i%2==0?'pending':'start',
-        starttime:"2018-01-01",
-        endtime:"2018-02-01",
+        starttime:new Date(),
+        endtime:new Date(),
         location:i%3==0?'北京':i%2==0?'上海':'广州',
         principal:i%3==0?'杰克':i%2==0?'约翰':'彼得',
     }
