@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "qiraosky",
-  "license": "ISC",
+  "license": "MIT",
+  "homepage": "https://github.com/qiraosky/cloudstage",
   "dependencies": {
     "antd": "^3.6.2",
     "axios": "^0.18.0",

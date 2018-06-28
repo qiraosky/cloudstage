@@ -97,9 +97,7 @@ class ProjectManagementSearch extends React.Component {
             <Row>
                 <Col span={24} style={{ textAlign: 'right' }}>
                 <Button type="primary" htmlType="submit" onClick={this.handleSearch}>查询</Button>
-                <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-                    清空
-                </Button>
+                <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>重置</Button>
                 </Col>
             </Row>
             <div style={{width:"100%",textAlign:"center"}}>

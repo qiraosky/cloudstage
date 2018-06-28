@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route } from 'react-router-dom';
-
 import PaasPortal from './paas/paas-portal';
+
+
+// SaasDemo 配置
 import SaasDemo from './saas/saas-demo';
-
-
 const SAAS_DEMO_ROUTER = {
     basePath:'demo',
     routerList: [
