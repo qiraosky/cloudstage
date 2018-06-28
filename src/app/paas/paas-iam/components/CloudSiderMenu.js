@@ -68,7 +68,7 @@ class CloudSiderMenu extends React.Component {
         let menuJsx = this.getMenu(this.props.initMenu);
         return(
             <Menu 
-                defaultSelectedKeys={['a1']} 
+                defaultSelectedKeys={['a1','a11']} 
                 defaultOpenKeys={[]}
                 mode={this.props.mode ? this.props.mode : "inline"}
                 inlineCollapsed = {this.props.inlineCollapsed}

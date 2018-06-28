@@ -27,7 +27,7 @@ const HttpCall = Loadable({
 /*************************************************************************************************** */
 const ProjectManagement = Loadable({
     loader: () =>
-      import(/* webpackChunkName: "saas-demo/projectmanagement" */ "./components/projectmanagement/ProjectManagement"),
+      import(/* webpackChunkName: "saas-demo/projectmanagement" */ "./components/projectmanagement"),
       loading: Loading
 });
 

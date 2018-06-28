@@ -1,5 +1,8 @@
 import React from 'react';
 
-export default ()=>(
-    <div>ProjectManagement</div>
-)
+export default (props)=>{
+    console.log(props)
+    return(
+        <div>ProjectManagement</div>
+    )
+}
