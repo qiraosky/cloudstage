@@ -11,6 +11,7 @@ class BusiTableGrid extends React.Component{
             data: [],
             pagination: {showQuickJumper:true,pageSize:5},
             loading: false,
+            searchData:{}
         };
     }//end of constructor
 
@@ -115,7 +116,12 @@ class BusiTableGrid extends React.Component{
 
     
     render(){
-      console.log(this.props)
+      
+      if(this.props.searchData != this.state.searchData){
+        console.log(this.props);
+        this.state.searchData = this.props.searchData;
+        this.fetch()
+      }
         return (
             <div>
                 <Link to='/demo/busiFormDemoAdd' title='新增' >

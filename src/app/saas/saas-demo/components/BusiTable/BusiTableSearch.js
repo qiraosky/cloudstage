@@ -17,13 +17,17 @@ const SearchFormItem = (props)=>{
 class AdvancedSearchForm extends React.Component {
     state = {
       expand: false,
-      searchObj:{}
+      gridSearchParam:{}
     };
   
     handleSearch = (e) => {
       e.preventDefault();
       this.props.form.validateFields((err, values) => {
         //console.log('Received values of form: ', values);
+        //console.log(this.state)
+        this.setState({
+           gridSearchParam:{...this.state.gridSearchParam}
+        })
       });
     }
   
@@ -37,9 +41,10 @@ class AdvancedSearchForm extends React.Component {
     }
 
     handleInputChange = (paramName) => ((event) => {
-      this.state.name = event.target.value;
-      console.log(event)
-      this.setState({name:event.target.value}); 
+      this.state.gridSearchParam[paramName] = event.target.value;
+      this.setState({
+        gridSearchParam:this.state.gridSearchParam
+      }); 
     })
   
     // To generate mock Form.Item
@@ -56,7 +61,7 @@ class AdvancedSearchForm extends React.Component {
             display={true}
             FieldDecorator = {getFieldDecorator}
             name="姓名">
-            <Input span={6} placeholder="请输入查询条件" value={this.state.name} onChange={this.handleInputChange("name")} />
+            <Input span={6} placeholder="请输入查询条件" value={this.state.gridSearchParam.name} onChange={this.handleInputChange("name")} />
           </SearchFormItem>
       );
 
