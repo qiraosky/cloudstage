@@ -77,8 +77,8 @@ class ProjectManagementSearch extends React.Component {
             <SearchFormItem key="principal" itemKey="principal" name="负责人" hide={!this.state.expand}
                 getFieldDecorator={getFieldDecorator}>
                 <Select span={6}>
-                      <Select.Option value="zhangsan">张三</Select.Option>
-                      <Select.Option value="lisi">李四</Select.Option>
+                      <Select.Option value="john">约翰</Select.Option>
+                      <Select.Option value="jack">杰克</Select.Option>
                </Select>
             </SearchFormItem>
         );
