@@ -6,15 +6,18 @@ import { Card , Row , Col , Input , Form , Button , Select , DatePicker , messag
 import '../../index.css';
 
 const SearchFormItem = (props)=>{
+    let config = {
+        rules: [{
+            type:props.type?props.type:"string",
+            required: props.required,
+            message: props.message,
+        }],
+    };
+    if(props.initValue){
+        config = Object.assign(config,{initialValue:props.initValue})
+    }
     return (<Form.Item style={{display:props.invisiable?"none":"block"}}>
-                {props.getFieldDecorator(props.itemKey, {
-                    initialValue:props.initValue,
-                    rules: [{
-                        type:props.type?props.type:"string",
-                        required: props.required,
-                        message: props.message,
-                    }],
-                })(props.children)}
+                {props.getFieldDecorator(props.itemKey,config )(props.children)}
                 </Form.Item>);
 }
 
@@ -53,8 +56,8 @@ class ProjectOperation extends React.Component{
     getProject = (parameters)=>{
         ProjectManagementService.getProject(parameters.projectId).then((req)=>{
             let projectEntity = req.data.project;
-            if(!(projectEntity.starttime instanceof Date)) projectEntity.starttime = new Date();
-            if(!(projectEntity.endtime instanceof Date)) projectEntity.endtime = new Date();
+            //if(!(projectEntity.starttime instanceof Date)) projectEntity.starttime = null;
+            //if(!(projectEntity.endtime instanceof Date)) projectEntity.endtime = null;
             this.setState({
                 projectEntity
             })
@@ -174,7 +177,7 @@ class ProjectOperation extends React.Component{
                         <Col className="gutter-row" span={8}>
                             <SearchFormItem  key="starttime"  itemKey="starttime" name="开始时间"
                                 type="object" required = {true}  message="必须选择项目开始时间"
-                                initValue = {moment(this.state.projectEntity.starttime)}
+                                initValue = {this.state.projectEntity.starttime?moment(this.state.projectEntity.starttime):null}
                                 getFieldDecorator={this.props.form.getFieldDecorator}>
                                  <DatePicker className="project_datepicker_input"/>
                             </SearchFormItem>
@@ -187,7 +190,7 @@ class ProjectOperation extends React.Component{
                         <Col className="gutter-row" span={8}>
                             <SearchFormItem  key="endtime"  itemKey="endtime" name="结束时间"
                                 type="object" 
-                                initValue = {moment(this.state.projectEntity.endtime)}
+                                initValue = {this.state.projectEntity.endtime?moment(this.state.projectEntity.endtime):null}
                                 getFieldDecorator={this.props.form.getFieldDecorator}>
                                 <DatePicker className="project_datepicker_input"/>
                             </SearchFormItem>
