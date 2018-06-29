@@ -105,9 +105,7 @@ class ProjectOperation extends React.Component{
 
     render(){
         return (
-            <Form
-                onSubmit = {this.handleSubmit}
-            >
+            <Form>
                 <Card title={this.state.title} extra={<a href="#/demo/projectmanagement">返回</a>} style={{ width: "100%" }}>
                     <SearchFormItem  key="projectId"  itemKey="projectId" name="项目ID"
                         initValue = {this.state.projectEntity.projectId}
@@ -215,10 +213,10 @@ class ProjectOperation extends React.Component{
                         <Col className="gutter-row" span={8}>
                         </Col>
                     </Row>                                                        
-                    <Button type="primary" htmlType="submit" onClick={this.handleSearch}>提交</Button>
+                    <Button type="primary" htmlType="submit" onClick={this.handleSubmit}>提交</Button>
                     <Button style={{marginLeft:"6px"}} onClick={this.handleReset}>重置</Button>
                 </Card>
-            </Form>
+            </Form> 
         )
     }
 }

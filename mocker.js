@@ -90,7 +90,6 @@ const fastApi = {
                     dbo.collection("project").count(whereStr,function(err, result) {
                         if (err) throw err;
                         db.close();
-                        console.log(result)
                         returnVal.info.total = result;
                         res.send(returnVal);
                     });
@@ -98,11 +97,6 @@ const fastApi = {
                 
             });
         });
-
-        
-
-
-        //res.send({ status: 'ok', message: '测试成功 ！' });
     },
     'POST /demo/deleteProject':(req, res) => {
         let param = req.body;
