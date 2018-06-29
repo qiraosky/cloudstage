@@ -38,6 +38,7 @@
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.0",
+    "mongodb": "^3.1.0",
     "node-uuid": "^1.4.8",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
