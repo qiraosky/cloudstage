@@ -4,6 +4,7 @@ import { Table , Button , Divider , Popconfirm ,message } from 'antd';
 import { Link } from 'react-router-dom';
 import ProjectManagementService from '../../services/ProjectManagementService';
 import ProjectManagementSearch from './ProjectManagementSearch';
+import '../../index.css';
 
 class ProjectManagementGrid extends React.Component {
     constructor(props){

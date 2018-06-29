@@ -25,3 +25,7 @@
 .antd-custom-table-body {
   font-size:14px;
 }
+
+.ant-card-head-title {
+  font-weight: bold;
+}

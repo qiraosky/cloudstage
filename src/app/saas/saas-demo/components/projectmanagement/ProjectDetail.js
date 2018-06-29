@@ -18,8 +18,8 @@ class ProjectDetail extends React.Component{
         this.getProject(UrlUtils.getUrlParam(search))
     }
 
-    getProject = (paramEntity)=>{
-        ProjectManagementService.getProject(paramEntity.projectId).then((req)=>{
+    getProject = (parameters)=>{
+        ProjectManagementService.getProject(parameters.projectId).then((req)=>{
             this.setState({
                 projectEntity:req.data.project
             })

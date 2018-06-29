@@ -90,7 +90,7 @@ const fastApi = {
         let param = req.body;
         param.projectId = uuid.v4()
         projectList.unshift(param)
-        res.send({ status: 'ok', project: projectList[projectList.length-1]}); 
+        res.send({ status: 'ok', project: param}); 
     },
     'POST /demo/updateProject':(req, res) => {
         console.log("updateData processing")

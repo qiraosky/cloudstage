@@ -1,3 +1,11 @@
+.project_operation_row {
+    padding: 6px 0px;
+}
+
+.project_operation_col_key {
+    font-weight:bold;
+}
+
 .project_detail_row {
     padding: 6px 0px;
 }
@@ -5,3 +13,4 @@
 .project_detail_col_key {
     font-weight:bold;
 }
+

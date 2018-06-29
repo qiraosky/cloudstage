@@ -26,8 +26,24 @@ const getProject = (projectId) =>(
   })
 )
 
+const saveProject = (projectEntity) => (
+  http({
+    url:'/demo/saveProject',
+    data:projectEntity
+  })
+)
+
+const updateProject = (projectEntity) => (
+  http({
+    url:'/demo/updateProject',
+    data:projectEntity
+  })
+)
+
 export default {
     listProject,
     deleteProject,
-    getProject
+    getProject,
+    saveProject,
+    updateProject
 }
