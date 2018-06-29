@@ -56,13 +56,13 @@ class ProjectManagementGrid extends React.Component {
             dataIndex: 'starttime',
             className:"antd-custom-table-body",
             sorter: true,
-            render: (starttime) => (moment(starttime).format("YYYY-MM-DD")),
+            render: (starttime) => (starttime?moment(starttime).format("YYYY-MM-DD"):""),
           },{
             title: (<span className="antd-custom-table-head">结束时间</span>),
             dataIndex: 'endtime',
             className:"antd-custom-table-body",
             sorter: true,
-            render: (endtime) => (moment(endtime).format("YYYY-MM-DD")),
+            render: (endtime) => (endtime?moment(endtime).format("YYYY-MM-DD"):""),
           },{
             title: (<span className="antd-custom-table-head">项目所在地</span>),
             dataIndex: 'location',
@@ -111,12 +111,12 @@ class ProjectManagementGrid extends React.Component {
         this.listProject(this.state.queryParam);
       }
 
-     listProject = (params={},errqe,commond) => {
+     listProject = (params={},err,commond) => {
         if(commond == "clear"){
           this.state.queryParam = {};
         }
         this.state.queryParam = Object.assign(this.state.queryParam,params)
-        console.log("fatch param",this.state.queryParam)
+        //console.log("fatch param",this.state.queryParam)
         this.setState({ loading: true });
         ProjectManagementService.listProject(this.state.queryParam).then((req) => {
           const info = req.data.info;

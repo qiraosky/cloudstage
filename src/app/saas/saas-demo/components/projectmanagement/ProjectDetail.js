@@ -76,7 +76,7 @@ class ProjectDetail extends React.Component{
                         开始时间：
                     </Col>
                     <Col className="gutter-row" span={7}>
-                        {moment(this.state.projectEntity.starttime).format("YYYY-MM-DD")}
+                        {this.state.projectEntity.starttime?moment(this.state.projectEntity.starttime).format("YYYY-MM-DD"):""}
                     </Col>
                     <Col className="gutter-row" span={2}>
                     </Col>
@@ -84,7 +84,7 @@ class ProjectDetail extends React.Component{
                         结束时间：
                     </Col>
                     <Col className="gutter-row" span={7}>
-                        {moment(this.state.projectEntity.endtime).format("YYYY-MM-DD")}
+                        {this.state.projectEntity.endtime?moment(this.state.projectEntity.endtime).format("YYYY-MM-DD"):""}
                     </Col>
                 </Row>
                 <Row gutter={16} className="project_detail_row">

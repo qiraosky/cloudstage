@@ -10,8 +10,9 @@ const SearchFormItem = (props)=>{
                 {props.getFieldDecorator(props.itemKey, {
                     initialValue:props.initValue,
                     rules: [{
-                    required: props.required,
-                    message: props.message,
+                        type:props.type?props.type:"string",
+                        required: props.required,
+                        message: props.message,
                     }],
                 })(props.children)}
                 </Form.Item>);
@@ -51,10 +52,13 @@ class ProjectOperation extends React.Component{
 
     getProject = (parameters)=>{
         ProjectManagementService.getProject(parameters.projectId).then((req)=>{
+            let projectEntity = req.data.project;
+            if(!(projectEntity.starttime instanceof Date)) projectEntity.starttime = new Date();
+            if(!(projectEntity.endtime instanceof Date)) projectEntity.endtime = new Date();
             this.setState({
-                projectEntity:req.data.project
+                projectEntity
             })
-            console.log(this.state.projectEntity)
+            //console.log(this.state.projectEntity)
          })
     }
 
@@ -65,10 +69,10 @@ class ProjectOperation extends React.Component{
             }else{
                 let submitEntity = {
                     ...values,
-                    starttime:values.starttime.toDate(),
+                    starttime:values.starttime?values.starttime.toDate():null,
                     endtime:values.endtime?values.endtime.toDate():null
                 }
-                console.log("handleSubmit",submitEntity)
+                //console.log("handleSubmit",submitEntity)
                 let httpCallPromise = null;
                 if(this.state.isAdd){
                     httpCallPromise = ProjectManagementService.saveProject(submitEntity);
@@ -169,10 +173,10 @@ class ProjectOperation extends React.Component{
                         </Col>
                         <Col className="gutter-row" span={8}>
                             <SearchFormItem  key="starttime"  itemKey="starttime" name="开始时间"
-                                required = {true}  message="必须选择项目开始时间"
+                                type="object" required = {true}  message="必须选择项目开始时间"
                                 initValue = {moment(this.state.projectEntity.starttime)}
                                 getFieldDecorator={this.props.form.getFieldDecorator}>
-                                 <DatePicker  />
+                                 <DatePicker className="project_datepicker_input"/>
                             </SearchFormItem>
                         </Col>
                         <Col className="gutter-row" span={2}>
@@ -182,9 +186,10 @@ class ProjectOperation extends React.Component{
                         </Col>
                         <Col className="gutter-row" span={8}>
                             <SearchFormItem  key="endtime"  itemKey="endtime" name="结束时间"
+                                type="object" 
                                 initValue = {moment(this.state.projectEntity.endtime)}
                                 getFieldDecorator={this.props.form.getFieldDecorator}>
-                                <DatePicker  />
+                                <DatePicker className="project_datepicker_input"/>
                             </SearchFormItem>
                         </Col>
                     </Row>   
