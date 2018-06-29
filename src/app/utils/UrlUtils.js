@@ -8,6 +8,6 @@ const getUrlParam =  function (query) {
     return obj;
 }
 
-export {
+export default {
     getUrlParam
 }

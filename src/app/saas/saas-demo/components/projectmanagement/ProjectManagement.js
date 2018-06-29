@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Table , Button , Divider , Popconfirm ,message } from 'antd';
 import { Link } from 'react-router-dom';
-import { listProject } from '../../services/ProjectManagementService';
+import ProjectManagementService from '../../services/ProjectManagementService';
 import ProjectManagementSearch from './ProjectManagementSearch';
 
 class ProjectManagementGrid extends React.Component {
@@ -85,7 +85,7 @@ class ProjectManagementGrid extends React.Component {
                 <Divider type="vertical" />
                 <Link to={{pathname:'/demo/projectupdate',search:`?projectId=${record.projectId}`}} title='更新'  >更新</Link>
                 <Divider type="vertical" />
-                <Popconfirm title="是否删除?" onConfirm={() => this.deleteData(record.projectId)}>
+                <Popconfirm title="是否删除?" onConfirm={() => this.deleteProject(record.projectId)}>
                   <a href="javascript:;">删除</a>
                 </Popconfirm>
               </span>
@@ -107,17 +107,17 @@ class ProjectManagementGrid extends React.Component {
             sortOrder: sorter.order,
             ...filters
           });
-        this.fetch(this.state.queryParam);
+        this.listProject(this.state.queryParam);
       }
 
-    fetch = (params={},errqe,commond) => {
+     listProject = (params={},errqe,commond) => {
         if(commond == "clear"){
           this.state.queryParam = {};
         }
         this.state.queryParam = Object.assign(this.state.queryParam,params)
         console.log("fatch param",this.state.queryParam)
         this.setState({ loading: true });
-        listProject(this.state.queryParam).then((req) => {
+        ProjectManagementService.listProject(this.state.queryParam).then((req) => {
           const info = req.data.info;
           const results = req.data.results;
           if(commond == "clear"){
@@ -132,14 +132,21 @@ class ProjectManagementGrid extends React.Component {
         });
       }
 
+      deleteProject = (projectId) => {
+        ProjectManagementService.deleteProject(projectId).then((req)=>{
+          message.success('删除成功');
+          this.listProject(this.state.queryParam);
+        })
+    }
+
       componentDidMount() {
-        this.fetch(this.state.queryParam);
+        this.listProject(this.state.queryParam);
       }
 
     render(){
         return(
             <div>
-            <ProjectManagementSearch onSearch={this.fetch}/>
+            <ProjectManagementSearch onSearch={this.listProject}/>
             <Link to='/demo/projectadd' title='新增' >
               <Button style={{marginTop:'16px'}} type="primary">新增</Button>
             </Link>

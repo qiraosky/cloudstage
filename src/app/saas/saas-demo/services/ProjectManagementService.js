@@ -1,6 +1,6 @@
 import { http } from '../../../utils/HttpUtils';
 const listProject = (params)=>(http({
-    url: 'http://127.0.0.1:3001/demo/listProject',
+    url: '/demo/listProject',
     method: 'post',
     data: {
       pageSize: 10,
@@ -10,7 +10,24 @@ const listProject = (params)=>(http({
     type: 'json',
   }))
 
+const deleteProject = (projectId)=>(
+  http({
+    url:'/demo/deleteProject',
+    data:{projectId:projectId}
+  })
+)
 
-export {
-    listProject
+const getProject = (projectId) =>(
+  http({
+    url:'/demo/getProject',
+    data:{
+      projectId:projectId
+    }
+  })
+)
+
+export default {
+    listProject,
+    deleteProject,
+    getProject
 }

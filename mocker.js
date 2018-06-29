@@ -79,18 +79,18 @@ const fastApi = {
         for(let i=0;i<projectList.length;i++){
             if(param.projectId == projectList[i].projectId){
                 let bean = projectList[i];
-                res.send({ status: 'ok', user: bean}); 
+                res.send({ status: 'ok', project: bean}); 
                 return;
             }
         }
-        res.send({ status: 'not found', user: {}}); 
+        res.send({ status: 'not found', project: {}}); 
     },
     'POST /demo/saveProject':(req, res) => {
         console.log("saveData processing")
         let param = req.body;
         param.projectId = uuid.v4()
         projectList.unshift(param)
-        res.send({ status: 'ok', user: projectList[projectList.length-1]}); 
+        res.send({ status: 'ok', project: projectList[projectList.length-1]}); 
     },
     'POST /demo/updateProject':(req, res) => {
         console.log("updateData processing")
@@ -98,11 +98,11 @@ const fastApi = {
         for(let i=0;i<projectList.length;i++){
             if(param.projectId == projectList[i].projectId){
                 projectList[i] = param;
-                res.send({ status: 'ok', user: projectList[i]}); 
+                res.send({ status: 'ok', project: projectList[i]}); 
                 return;
             }
         }
-        res.send({ status: 'not found', user: {}}); 
+        res.send({ status: 'not found', project: {}}); 
     }
 }
  

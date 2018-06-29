@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Row, Col, Input, Button, Icon , Divider, Select , DatePicker , Switch , TreeSelect} from 'antd';
+import { Form, Row, Col, Input, Button, Icon , Select , DatePicker , TreeSelect} from 'antd';
 
 const SearchFormItem = (props)=>{
     return (<Col span={8} style={{ padding:"0px 12px",display: !props.hide ? 'block' : 'none' }}>
