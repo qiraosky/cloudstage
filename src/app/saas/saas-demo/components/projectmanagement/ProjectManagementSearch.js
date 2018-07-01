@@ -66,19 +66,20 @@ class ProjectManagementSearch extends React.Component {
             </SearchFormItem>
         );
 
-        children.push(
+       /*  children.push(
             <SearchFormItem key="endtime" itemKey="endtime" name="结束时间" hide={!this.state.expand}
                 getFieldDecorator={getFieldDecorator}>
                 <DatePicker.RangePicker />
             </SearchFormItem>
-        );
+        ); */
 
         children.push(
             <SearchFormItem key="principal" itemKey="principal" name="负责人" hide={!this.state.expand}
                 getFieldDecorator={getFieldDecorator}>
                 <Select span={6}>
-                      <Select.Option value="john">约翰</Select.Option>
-                      <Select.Option value="jack">杰克</Select.Option>
+                      <Select.Option value="约翰">约翰</Select.Option>
+                      <Select.Option value="杰克">杰克</Select.Option>
+                      <Select.Option value="彼得">彼得</Select.Option>
                </Select>
             </SearchFormItem>
         );

@@ -164,7 +164,11 @@ class ProjectOperation extends React.Component{
                             <SearchFormItem  key="principal"  itemKey="principal" name="负责人"
                                 initValue = {this.state.projectEntity.principal}
                                 getFieldDecorator={this.props.form.getFieldDecorator}>
-                                <Input />
+                                <Select span={6} >
+                                        <Select.Option value="约翰">约翰</Select.Option>
+                                        <Select.Option value="杰克">杰克</Select.Option>
+                                        <Select.Option value="彼得">彼得</Select.Option>
+                                </Select>
                             </SearchFormItem>
                         </Col>
                     </Row>    

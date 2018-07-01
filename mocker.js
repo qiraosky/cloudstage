@@ -78,15 +78,44 @@ const fastApi = {
         MongoClient.connect(url, function(err, db) {
             if (err) throw err;
             var dbo = db.db("gcable");
-             var whereStr = {};  // 查询条件
-            dbo.collection("project").find(whereStr).skip(start).limit(param.pageSize).toArray(function(err, result) {
+            var whereStr = {};  // 查询条件
+            //项目编码：模糊查询
+            if(param.projectCode)whereStr = Object.assign(whereStr,{projectCode:{$regex:param.projectCode,$options:"$i"}});
+            //项目名称：模糊查询
+            if(param.name)whereStr = Object.assign(whereStr,{name:{$regex:param.name,$options:"$i"}});
+            //负责人：选择框
+            if(param.principal)whereStr = Object.assign(whereStr,{principal:param.principal});
+            //状态：过滤器
+            if(param.status && param.status instanceof Array && param.status.length > 0){
+                let statusWhere = [];
+                for(let item in param.status){
+                    statusWhere.push({status:param.status[item]})
+                }
+                whereStr = Object.assign(whereStr,{"$or":statusWhere});
+            }
+            //开始时间：时间区间
+            if(param.starttime && param.starttime instanceof Array && param.starttime.length > 0){
+                let starttimeWhere = {
+                    starttime:{"$gte":new Date(param.starttime[0]),"$lte":new Date(param.starttime[1])}
+                }
+                whereStr = Object.assign(whereStr,starttimeWhere);
+            }
+            let sort = {}
+            if(param.sortField && param.sortOrder) {
+                sort[param.sortField] = (param.sortOrder =="ascend"?1:-1);
+            }
+            console.log(whereStr)
+            dbo.collection("project")
+                    .find(whereStr)
+                    .skip(start).limit(param.pageSize)
+                    .sort(sort)
+                    .toArray(function(err, result) {
                 if (err) throw err;
                 db.close();
                 returnVal.results = result;
                 MongoClient.connect(url, function(err, db) {
                     if (err) throw err;
                     var dbo = db.db("gcable");
-                     var whereStr = {};  // 查询条件
                     dbo.collection("project").count(whereStr,function(err, result) {
                         if (err) throw err;
                         db.close();
