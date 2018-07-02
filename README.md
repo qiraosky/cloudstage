@@ -2,7 +2,7 @@
 a framework with react react-route redux and antd ect...  
   
   
-Router 配置文件：  
+# Router 配置文件
 1）全局配置：/src/app/AppRouter.js  
 其中 const MINI_FRAMEWORK = false;   
 true:为最小模式，不显示菜单布局，不依赖 paas-protal   
@@ -17,7 +17,7 @@ ROUTE_MAPPER = {
         {url:'index',componentName:'Index'}, //路径映射到组件 此处  http://localhost/#demo/index 映射到了  Inxex 组件  
 }  
   
-reducer 配置文件：  
+# reducer 配置文件
 /src/app/AppRootReducer.js  
 
 
