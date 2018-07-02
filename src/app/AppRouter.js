@@ -9,8 +9,13 @@ import SaasDemo from './saas/saas-demo';
 
 
 class AppRouter extends React.Component {
-    resloveRouter = (component,routeMapper) => {
-        if(!routeMapper || !routeMapper.routerList || !(routeMapper.routerList instanceof Array) || routeMapper.routerList.lenth <=0){
+    resloveRouter = (saasImport,routeMapper) => {
+        if(!routeMapper){
+            routeMapper = saasImport.ROUTE_MAPPER;
+        }
+        if(!routeMapper || !routeMapper.routerList 
+            || !(routeMapper.routerList instanceof Array) 
+            || routeMapper.routerList.lenth <=0){
             console.error(`BasePath = ${routeMapper?routeMapper.basePath:"undefined"},RouteMapper.routerList is not an Array or is empty,RouteMapper=`,routeMapper)
             return (<span></span>)
         }
@@ -19,7 +24,7 @@ class AppRouter extends React.Component {
             let key = `${routeMapper.basePath}_${index}`;
             let url = `/${routeMapper.basePath}/${item.url}`;
             return (
-                <Route key={key} path={url} component={component[item.componentName]} />
+                <Route key={key} path={url} component={saasImport[item.componentName]} />
             )
         })
     }
@@ -27,7 +32,7 @@ class AppRouter extends React.Component {
     routeContent = ()=>(
         <div>
             <Route exact path="/" component={PaasPortal.Home} />
-            {this.resloveRouter(SaasDemo,SaasDemo.ROUTE_MAPPER)}
+            {this.resloveRouter(SaasDemo)}
         </div>
     )
 
