@@ -1,11 +1,22 @@
 import React from 'react'
 import { Route } from 'react-router-dom';
-import PaasPortal from './paas/paas-portal';
+import DefaultHome from './components/home/DefaultHome';
 //最小化启动模式（无菜单，布局等）
 const MINI_FRAMEWORK = false;
 
+
+/************************************************************************** */
+/** 可修改部分 v*/
+// Paas 系统
+import PaasPortal from './paas/paas-portal';
+
+
 // SaasDemo 配置
 import SaasDemo from './saas/saas-demo';
+
+
+/** 可修改部分 ^*/
+/************************************************************************** */
 
 
 class AppRouter extends React.Component {
@@ -31,8 +42,10 @@ class AppRouter extends React.Component {
 
     routeContent = ()=>(
         <div>
-            <Route exact path="/" component={PaasPortal.Home} />
+            <Route exact path="/" component={DefaultHome} />
+            {/****可修改部分***************/}
             {this.resloveRouter(SaasDemo)}
+            {/****可修改部分***************/}
         </div>
     )
 
