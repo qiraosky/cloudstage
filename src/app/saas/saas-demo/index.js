@@ -44,6 +44,20 @@ const ProjectDetail = Loadable({
 });
 
 /************************************************************************************************** */
+const ROUTE_MAPPER = {
+    basePath:'demo',
+    routerList: [
+        {url:'index',componentName:'Index'},
+        {url:'iframeimport',componentName:'IframeImport'},
+        {url:'paramtransmit',componentName:'ParamTransmit'},
+        {url:'httpcall',componentName:'HttpCall'},
+        {url:'projectmanagement',componentName:'ProjectManagement'},
+        {url:'projectadd',componentName:'ProjectOperation'},
+        {url:'projectupdate',componentName:'ProjectOperation'},
+        {url:'projectdetail',componentName:'ProjectDetail'},
+    ]
+}
+/************************************************************************************************** */
 export default {
     Index,
     IframeImport,
@@ -51,5 +65,6 @@ export default {
     HttpCall,
     ProjectManagement,
     ProjectOperation,
-    ProjectDetail
+    ProjectDetail,
+    ROUTE_MAPPER
 }
