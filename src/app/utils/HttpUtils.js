@@ -15,6 +15,14 @@ const http = (config) => {
   if('post'==config.method && config.params && !config.data ){
     config.data = config.params
   }
+  if(!config.headers){
+    config = {
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      ...config
+    };
+  }
   return axios(config);
 }
 

@@ -4,6 +4,8 @@
 
 .project_operation_col_key {
     font-weight:bold;
+    text-align: center;
+    line-height: 32px;
 }
 
 .project_detail_row {
@@ -12,6 +14,7 @@
 
 .project_detail_col_key {
     font-weight:bold;
+    text-align: center;
 }
 
 .project_datepicker_input {

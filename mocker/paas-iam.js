@@ -48,6 +48,7 @@ const siderMenuJson1 = [
         children:[
             {key:"a11",name:'索引页',uri:{pathname:'/demo/index'}},
             {key:"a15",name:'项目管理综合演示',uri:{pathname:'/demo/projectmanagement'}},
+            {key:"a16",name:'项目管理封装后综合演示',uri:{pathname:'/demo/autoprojectmanagement'}},
             {key:"a13",name:'传参演示',uri:{pathname:'/demo/paramtransmit',search:'?name=1'}},
             {key:"a14",name:'Http调用演示',uri:{pathname:'/demo/httpcall'}},
             {key:"a199",name:'框架引入演示',uri:{pathname:'/demo/iframeimport'}},

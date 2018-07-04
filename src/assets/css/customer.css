@@ -29,3 +29,8 @@
 .ant-card-head-title {
   font-weight: bold;
 }
+
+.ant-form-item-label {
+  line-height: 32px;
+  font-weight: 530;
+}

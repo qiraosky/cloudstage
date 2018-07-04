@@ -42,6 +42,28 @@ const ProjectDetail = Loadable({
       import(/* webpackChunkName: "saas-demo/projectmanagement" */ "./components/projectmanagement/ProjectDetail"),
       loading: Loading
 });
+/*************************************************************************************************** */
+
+const AutoProjectManagement = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/autoprojectmanagement" */ "./components/autoprojectmanagement"),
+      loading: Loading
+});
+
+const AutoProjectOperation = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/autoprojectmanagement" */ "./components/autoprojectmanagement/AutoProjectOperation"),
+      loading: Loading
+});
+
+const AutoProjectDetail = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/autoprojectmanagement" */ "./components/autoprojectmanagement/AutoProjectDetail"),
+      loading: Loading
+});
+
+
+
 
 /************************************************************************************************** */
 const ROUTE_MAPPER = {
@@ -55,6 +77,10 @@ const ROUTE_MAPPER = {
         {url:'projectadd',componentName:'ProjectOperation'},
         {url:'projectupdate',componentName:'ProjectOperation'},
         {url:'projectdetail',componentName:'ProjectDetail'},
+        {url:'autoprojectmanagement',componentName:'AutoProjectManagement'},
+        {url:'autoprojectadd',componentName:'AutoProjectOperation'},
+        {url:'autoprojectupdate',componentName:'AutoProjectOperation'},
+        {url:'autoprojectdetail',componentName:'AutoProjectDetail'},
     ]
 }
 /************************************************************************************************** */
@@ -66,5 +92,8 @@ export default {
     ProjectManagement,
     ProjectOperation,
     ProjectDetail,
+    AutoProjectManagement,
+    AutoProjectOperation,
+    AutoProjectDetail,
     ROUTE_MAPPER
 }
