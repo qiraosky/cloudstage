@@ -126,25 +126,19 @@ class AutoProjectOperation extends React.Component{
 
     getEntity = (primaryKey)=>{
          this.autoDataFromUtils.getEntity(this,"/demo/getProject",{projectId:primaryKey},(req)=>(req.data.project))
-        /* ProjectManagementService.getProject(parameters.projectId).then((req)=>{
-            let projectEntity = req.data.project;
-            //if(!(projectEntity.starttime instanceof Date)) projectEntity.starttime = null;
-            //if(!(projectEntity.endtime instanceof Date)) projectEntity.endtime = null;
-            this.setState({
-                projectEntity
-            })
-            //console.log(this.state.projectEntity)
-         }) */
     }
 
     handleSubmit = () =>{
         this.props.form.validateFields((err, values) => {
-            this.autoDataFromUtils.saveEntity(this, err, values,(formValues)=>{
-                return {
-                    ...formValues,
-                    starttime:values.starttime?values.starttime.toDate():null,
-                    endtime:values.endtime?values.endtime.toDate():null
-                }
+            let _this=this,
+            afterCallback = (req)=>{
+                 this.props.history.push({
+                     pathname:"/demo/autoprojectupdate",
+                     search:`?primaryKey=${req.data.project.projectId}`
+                 })
+            }
+            this.autoDataFromUtils.saveEntity({
+                _this,afterCallback,err,values
             })
             /* if(err){
                 message.warning("请按提示正确填写表单");

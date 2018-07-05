@@ -28,7 +28,8 @@ class AutoDataFromUtils {
          })
     };
 
-    saveEntity = (_this, err, values, handleValues) => {
+    saveEntity = (saveParam) => {
+        let {_this, err, values, handleValues ,handleCallback, afterCallback, successMessage} = saveParam;
         if(err){
             message.warning("请按提示正确填写表单");
         }else{
@@ -53,10 +54,18 @@ class AutoDataFromUtils {
             if(httpCallPromise){
                 httpCallPromise.then((req)=>{
                     let dataEntity = req.data.project;
+                    if("function"==typeof(handleCallback)){
+                        dataEntity = handleCallback(req);
+                    }else{
+                        dataEntity = req.data;
+                    }
                     _this.setState({
                         dataEntity
                     })
-                    message.success("保存成功");
+                    message.success(successMessage?successMessage:"保存成功");
+                    if("function"==typeof(afterCallback)){
+                        dataEntity = afterCallback(req);
+                    }
                   })
             }
         }

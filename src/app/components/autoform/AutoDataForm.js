@@ -5,7 +5,7 @@ const AppFormItem = (props)=>{
     let basicRules = {
         type:props.type?props.type:"string",
         required: props.required,
-        message: props.message,
+        message: props.message?props.message:`必须输入${props.name}`,
     };
     let config = {
         rules: [Object.assign(basicRules,props.rules)],
