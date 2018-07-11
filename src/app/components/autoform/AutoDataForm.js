@@ -13,6 +13,9 @@ const AppFormItem = (props)=>{
     if(props.initValue){
         config = Object.assign(config,{initialValue:props.initValue()})
     }
+    if(props.formConfig){
+        config = Object.assign(config,formConfig)
+    }
     return (<Form.Item style={{display:props.invisiable?"none":"block"}}>
                 {props.getFieldDecorator(props.itemKey,config)(props.children)}
             </Form.Item>);
@@ -27,10 +30,18 @@ const ColFormItem = (props) =>(
             </Col>
             <Col className="gutter-row" span={8}>
                 <AppFormItem  
-                    key={item.itemKey}  itemKey={item.itemKey} name={item.name}
-                    initValue={item.initValue}  invisiable={item.invisiable}
-                    rules={item.rules} type={item.type}
-                    getFieldDecorator={props.getFieldDecorator}>
+                    {...{
+                        key:item.itemKey,
+                        itemKey:item.itemKey,
+                        name:item.name,
+                        initValue:item.initValue,
+                        invisiable:item.invisiable,
+                        rules:item.rules,
+                        type:item.type,
+                        getFieldDecorator:props.getFieldDecorator,
+                        ...(props.appFormItemConfig?props.appFormItemConfig:{}),
+                    }}
+                    >
                     {"function"==typeof(item.render)?item.render(item):item.render}
                 </AppFormItem>
             </Col>
@@ -40,8 +51,13 @@ const ColFormItem = (props) =>(
 const RowFormItem = (props) =>(
         <Row gutter={16} className={props.className}>
             <ColFormItem
-                cols = {props.cols}
-                getFieldDecorator = {props.getFieldDecorator}
+                {...{
+                    cols:props.cols,
+                    getFieldDecorator:props.getFieldDecorator,
+                    appFormItemConfig:props.appFormItemConfig,
+                    ...(props.colFormItemConfig?props.colFormItemConfig:{})
+                }}
+
             />
         </Row>
     );
@@ -49,10 +65,15 @@ const RowFormItem = (props) =>(
 const AppForms = (props) =>(
     props.rows.map((item,index)=>(
         <RowFormItem
-            key={index}
-            className={item.className?item.className:props.rowClassName}
-            getFieldDecorator={props.getFieldDecorator}
-            cols={item.cols}
+            {...{
+                key:index,
+                className:item.className?item.className:props.rowClassName,
+                getFieldDecorator:props.getFieldDecorator,
+                cols:item.cols,
+                colFormItemConfig:props.colFormItemConfig?props.colFormItemConfig:{},
+                appFormItemConfig:props.appFormItemConfig?props.appFormItemConfig:{},
+            }}
+
         />
 
     ))
@@ -60,10 +81,17 @@ const AppForms = (props) =>(
 
 const AppHideFroms = (props) => (
         props.hideForms.map((item,index)=>(
-            <AppFormItem  key={`${item.itemKey}_${index}`}  itemKey={item.itemKey} name={item.name}
-                initValue = {item.initValue}
-                invisiable = {true}
-                getFieldDecorator={props.getFieldDecorator}>
+            <AppFormItem  
+                {...{
+                    key:`${item.itemKey}_${index}`,
+                    itemKey:item.itemKey,
+                    name:item.name,
+                    initValue : item.initValue,
+                    invisiable : true,
+                    getFieldDecorator:props.getFieldDecorator,
+                    ...(props.appFormItemConfig?props.appFormItemConfig:{})
+                }}
+                >
                 <Input style={{display:"node"}} disabled />
             </AppFormItem>
 )))
