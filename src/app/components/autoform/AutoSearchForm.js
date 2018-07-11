@@ -9,6 +9,7 @@ const SearchFormItem = (props)=>{
                     required: props.required,
                     message: props.message,
                     }],
+                    ...props.searchFormConfig
                 })(props.children)}
                 </Form.Item>
             </Col>);
@@ -19,10 +20,19 @@ const SearchForm = (props) => {
         if(!item.hide){
             item.hide = ()=>(false)
         }
+        let searchFormConfig = props.searchFormConfig
+        searchFormConfig = (searchFormConfig?searchFormConfig:{})
         return (
-            <SearchFormItem  key={`${item.itemKey}-${index}`}  itemKey={item.itemKey} name={item.name}
-                hide={item.hide()}
-                getFieldDecorator={props.getFieldDecorator}>
+            <SearchFormItem  
+                {...{
+                    key:`${item.itemKey}-${index}`,
+                    itemKey:item.itemKey,
+                    name:item.name,
+                    hide:item.hide(),
+                    getFieldDecorator:props.getFieldDecorator,
+                    searchFormConfig
+                }}
+                >
                 {item.render(item)}
             </SearchFormItem>
         )

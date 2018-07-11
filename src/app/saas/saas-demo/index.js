@@ -62,7 +62,14 @@ const AutoProjectDetail = Loadable({
       loading: Loading
 });
 
+/************************************************************************************************** */
 
+
+const CommonCrud = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/commoncrud" */ "./components/commoncrud"),
+      loading: Loading
+});
 
 
 /************************************************************************************************** */
@@ -81,6 +88,7 @@ const ROUTE_MAPPER = {
         {url:'autoprojectadd',componentName:'AutoProjectOperation'},
         {url:'autoprojectupdate',componentName:'AutoProjectOperation'},
         {url:'autoprojectdetail',componentName:'AutoProjectDetail'},
+        {url:'commoncrud',componentName:'CommonCrud'},
     ]
 }
 /************************************************************************************************** */
@@ -95,5 +103,6 @@ export default {
     AutoProjectManagement,
     AutoProjectOperation,
     AutoProjectDetail,
+    CommonCrud,
     ROUTE_MAPPER
 }
