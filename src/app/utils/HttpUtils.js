@@ -20,6 +20,7 @@ const http = (config) => {
       headers:{
         'Content-Type': 'application/json'
       },
+      timeout:16000,
       ...config
     };
   }

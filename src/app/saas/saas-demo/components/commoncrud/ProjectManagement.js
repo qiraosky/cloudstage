@@ -38,6 +38,15 @@ class ProjectSearch extends CommonSearch {
                     <Select.Option value="杰克">杰克</Select.Option>
                     <Select.Option value="彼得">彼得</Select.Option>
                 </Select>)
+            },{
+                itemKey:"status",
+                name:"项目状态",
+                hide:()=>(!this.state.expand),
+                render:(item)=>(<Select span={6} placeholder={item.name}>
+                    <Select.Option value="start">开始</Select.Option>
+                    <Select.Option value="end">结束</Select.Option>
+                    <Select.Option value="pending">实施中</Select.Option>
+                </Select>)
             }]
 }
 
@@ -152,10 +161,26 @@ class ProjectManagement extends React.Component{
                         listUrl:"/demo/listProject",
                         deleteUrl:"/demo/deleteProject",
                         addPage:"/demo/autoprojectadd",
-                        antdTableCofnig:{}
+                        antdTableCofnig:{
+                            rowKey:(record)=>(record.projectId)
+                        },
+                        handleListRes:(res)=>{
+                            return {
+                                total:res.data.info.total,
+                                results:res.data.results
+                            }
+                        },beforeHandle:(value)=>{
+                            return value;
+                        }
                     },
                     search:{
-                       
+                        hidetoggle:false,
+                        rowColNumber:3,
+                        searchForm:{
+                            /* searchFormPropConfig:{
+                                colSpan:6
+                            } */
+                        }
                     }
                 }}
             />

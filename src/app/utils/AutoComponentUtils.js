@@ -82,13 +82,13 @@ class AutoDataTableUtils {
         }
     }
 
-    listEntity = (url,params)=>(http({
+    listEntity = (url,params,beforeHandle)=>(http({
         url: url,
         method: 'post',
         data: {
           pageSize: 10,
           page:1,
-          ...params,
+          ...("function"==typeof(beforeHandle)?beforeHandle(params):params),
         },
         type: 'json',
       }))

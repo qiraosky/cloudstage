@@ -63,13 +63,22 @@ class ErrorDetailModel extends React.Component{
 }
 
 const openNotification = (err) => {
-  notification.error({
-    key:"errorNotice",
-    message: err.message,
-    description: <div>{err.response.statusText}</div>,
-    //icon: <Icon type="frown" style={{ color: '#ff0000' }} />,
-    btn: <ErrorDetailModel/>
-  });
+  if(err.type == 'busiError'){
+    notification.warn({
+      key:"errorNotice",
+      message: err.message,
+      description: <div>{err.response.statusText}</div>,
+    });
+  }else{
+    notification.error({
+      key:"errorNotice",
+      message: err.message,
+      description: <div>{err.response.statusText}</div>,
+      //icon: <Icon type="frown" style={{ color: '#ff0000' }} />,
+      //btn: <ErrorDetailModel/>
+    });
+  }
+
 };
 
   //添加响应拦截器
@@ -96,8 +105,19 @@ const openNotification = (err) => {
     }else{
         err.message = '连接服务器失败!'
     }
-    console.error(err.response)
-    openNotification(err)
+    console.error("err.response",err.response)
+    if(err && err.response && err.response.data){
+      let data = err.response.data;
+      if("class cloud.microservices.common.exception.CloudException" == data.exceptionName){
+        err.message = "操作异常";
+        err.response.statusText = data.exceptionMessage;
+        err.type = "busiError"
+      }
+      openNotification(err)
+    }else{
+      openNotification(err)
+    }
+   
     return Promise.reject(err);
   });
 
