@@ -92,7 +92,7 @@ class CommonGrid extends React.Component {
 
     getCommonSearch = ()=>(<div></div>)
 
-      componentDidMount() {
+    componentDidMount() {
         this.listEntity(this.state.queryParam);
       }
 

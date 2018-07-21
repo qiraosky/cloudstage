@@ -127,9 +127,9 @@ class ProjectGrid extends CommonGrid {
           render: (text, record) => {
             return (
             <span>
-              <Link to={{pathname:'/demo/autoprojectdetail',search:`?primaryKey=${record.projectId}`}} title='详情'  >详情</Link>
+              <Link to={{pathname:'/demo/commoncrud/detail',search:`?primaryKey=${record.projectId}`}} title='详情'  >详情</Link>
               <Divider type="vertical" />
-              <Link to={{pathname:'/demo/autoprojectupdate',search:`?primaryKey=${record.projectId}`}} title='更新'  >更新</Link>
+              <Link to={{pathname:'/demo/commoncrud/update',search:`?primaryKey=${record.projectId}`}} title='更新'  >更新</Link>
               <Divider type="vertical" />
               <Popconfirm title="是否删除?" onConfirm={() => this.deleteProject(record.projectId)}>
                 <a href="javascript:;">删除</a>
@@ -160,7 +160,7 @@ class ProjectManagement extends React.Component{
                         columns:this.columns,
                         listUrl:"/demo/listProject",
                         deleteUrl:"/demo/deleteProject",
-                        addPage:"/demo/autoprojectadd",
+                        addPage:"/demo/commoncrud/save",
                         antdTableCofnig:{
                             rowKey:(record)=>(record.projectId)
                         },

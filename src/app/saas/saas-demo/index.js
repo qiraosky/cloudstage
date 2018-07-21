@@ -72,6 +72,24 @@ const CommonCrud = Loadable({
 });
 
 
+const ProjectManagementSave = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/commoncrud/save" */ "./components/commoncrud/ProjectManagementSave"),
+      loading: Loading
+});
+
+const ProjectManagementUpdate = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/commoncrud/update" */ "./components/commoncrud/ProjectManagementUpdate"),
+      loading: Loading
+});
+
+const ProjectManagementDetail = Loadable({
+    loader: () =>
+      import(/* webpackChunkName: "saas-demo/commoncrud/detail" */ "./components/commoncrud/ProjectManagementDetail"),
+      loading: Loading
+});
+
 /************************************************************************************************** */
 const ROUTE_MAPPER = {
     basePath:'demo',
@@ -88,7 +106,11 @@ const ROUTE_MAPPER = {
         {url:'autoprojectadd',componentName:'AutoProjectOperation'},
         {url:'autoprojectupdate',componentName:'AutoProjectOperation'},
         {url:'autoprojectdetail',componentName:'AutoProjectDetail'},
-        {url:'commoncrud',componentName:'CommonCrud'},
+        {url:'commoncrud/index',componentName:'CommonCrud'},
+        {url:'commoncrud/save',componentName:'ProjectManagementSave'},
+        {url:'commoncrud/update',componentName:'ProjectManagementUpdate'},
+        {url:'commoncrud/detail',componentName:'ProjectManagementDetail'},
+        
     ]
 }
 /************************************************************************************************** */
@@ -104,5 +126,8 @@ export default {
     AutoProjectOperation,
     AutoProjectDetail,
     CommonCrud,
+    ProjectManagementSave,
+    ProjectManagementUpdate,
+    ProjectManagementDetail,
     ROUTE_MAPPER
 }

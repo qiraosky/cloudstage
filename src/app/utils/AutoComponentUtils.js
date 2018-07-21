@@ -52,19 +52,19 @@ class AutoDataFromUtils {
             }
             
             if(httpCallPromise){
-                httpCallPromise.then((req)=>{
-                    let dataEntity = req.data.project;
+                httpCallPromise.then((res)=>{
+                    let dataEntity = res.data.project;
                     if("function"==typeof(handleCallback)){
-                        dataEntity = handleCallback(req);
+                        dataEntity = handleCallback(res);
                     }else{
-                        dataEntity = req.data;
+                        dataEntity = res.data;
                     }
                     _this.setState({
                         dataEntity
                     })
                     message.success(successMessage?successMessage:"保存成功");
                     if("function"==typeof(afterCallback)){
-                        dataEntity = afterCallback(req);
+                        dataEntity = afterCallback(res);
                     }
                   })
             }
