@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import UrlUtils from '../../../../utils/UrlUtils';
-import ProjectManagementService from '../../services/ProjectManagementService';
+import UrlUtils from '../../../../../utils/UrlUtils';
+import ProjectManagementService from '../../../services/ProjectManagementService';
 import { Card , Row , Col} from 'antd';
 
 

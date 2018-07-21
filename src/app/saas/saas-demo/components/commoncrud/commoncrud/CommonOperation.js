@@ -1,7 +1,7 @@
 import React from 'react';
-import UrlUtils from '__root__/utils/UrlUtils';
+import UrlUtils from '../../../../../utils/UrlUtils';
 import { Card , Row , Col , Input , Form , Button , Select , DatePicker , message} from 'antd';
-import AutoForm from '__root__/components/autoform';
+import AutoForm from '../../../../../components/autoform';
 
 
 

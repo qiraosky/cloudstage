@@ -1,6 +1,6 @@
-class ProjectManagementDetail extends React.Component{
-    render(){
-        return (<div>ProjectManagementDetail</div>)
-    }
+import CommonDetail from './commoncrud/CommonDetail';
+
+class ProjectManagementDetail extends CommonDetail{
 }
+
 export default ProjectManagementDetail;
